@@ -1,4 +1,8 @@
 # 使用gulp压缩并合并js,css,html文件教程
+##例如：一个项目名叫：NodeTest，
+##该项目下有src文件目录，
+##目录包含a.js,b.js,c.js,分别包含不同的内容
+
 #### window，mac端的同学，先确保安装好nodejs在自己的机器上
 #### Getting Started 在nodejs上安装gulp
 ```sh
@@ -19,7 +23,8 @@ npm install gulp-minify-html gulp-minify-css gulp-uglify gulp-concat  gulp-renam
 #### 在项目的根目录新建gulpfile.js，require需要的module
 
 ####压缩并合并js实例
-例如：一个项目名叫：NodeTest
+
+
 
 ```js
 var gulp = require('gulp'),
