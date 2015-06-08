@@ -51,7 +51,7 @@ gulp.task('default',['minifyjs']);
 
 ####保存好gulpfile.js后。命令行执行
 ```sh
-$ gulp
+gulp
 ```
 
 即可
