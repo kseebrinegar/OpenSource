@@ -25,7 +25,7 @@
             event           : "scroll",
             effect          : "show",
             container       : window,
-            data_attribute  : "original",
+            data_attribute  : "src",
             skip_invisible  : false,
             appear          : null,
             load            : null,
