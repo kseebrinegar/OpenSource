@@ -6,7 +6,7 @@
 #### window，mac端的同学，先确保安装好nodejs在自己的机器上,然后，cd 到你的项目文件根目录下
 #### Getting Started 在nodejs上安装gulp
 ```sh
-$ npm install  gulp -g
+ npm install  gulp -g
 ```
 #### 安装项目环境（不要问为什么，照做就是)
 
