@@ -1,7 +1,7 @@
 # 使用gulp压缩并合并js,css,html文件教程
-##例如：一个项目名叫：NodeTest，
-##该项目下有src文件目录，
-##目录包含a.js,b.js,c.js,分别包含不同的内容
+###例如：一个项目名叫：NodeTest，
+###该项目下有src文件目录，
+###目录包含a.js,b.js,c.js,分别包含不同的内容
 
 #### window，mac端的同学，先确保安装好nodejs在自己的机器上
 #### Getting Started 在nodejs上安装gulp
@@ -40,7 +40,7 @@ gulp.task('minifyjs', function() {
 		.pipe(concat('main.js')) //合并所有js到main.js
 		.pipe(gulp.dest('dest')) //输出main.js到文件夹
 		.pipe(uglify()) //压缩
-		.pipe(gulp.dest('dest2')); //输出
+		.pipe(gulp.dest('compress')); //输出
 });
 
 
@@ -48,3 +48,12 @@ gulp.task('default',['minifyjs']);
 
 
 ```
+
+####保存好gulpfile.js后。命令行执行
+```sh
+$ gulp
+```
+
+即可
+#### dest是合并好的main.js文件，compress下的压缩好的文件main.js
+
