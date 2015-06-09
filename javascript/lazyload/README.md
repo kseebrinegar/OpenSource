@@ -42,3 +42,34 @@ $('.load img').loadImg()
 $('img').loadImg()
 ```
 即可
+
+
+# 滚动加载图片lozyload方法使用文档
+下载js文件
+https://raw.githubusercontent.com/richardgong1987/openMaterial/master/javascript/lazyload/jquery.lazyload.js
+
+首先：
+把所有图片的src属性替换成data-src
+比如：
+```html
+<img src="a.jpeg" />
+```
+应该替换成：
+```html
+<img data-src="a.jpeg" />
+```
+
+####滚动加载图片
+
+```html
+<div class="load">
+    <img  alt="" data-src="a.jpeg"/><img  alt="" data-src="b.png"/>
+</div>
+```
+
+js部分只需要：
+
+```js
+$('img').lazyload();
+```
+即可
