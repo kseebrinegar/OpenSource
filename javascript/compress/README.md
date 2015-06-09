@@ -134,3 +134,120 @@ gulp
 
 
 
+
+
+#项目实战
+```js
+var RootPath = 'js/';
+
+var BaseJSlist = [
+    RootPath+'jquery-1.9.1.js',
+    RootPath+'jquery.easing.1.3.js',
+    RootPath+'jquery.tmpl.js',
+    RootPath+'jquery.mousewheel.js',
+    RootPath+'jquery.cookie.js',
+    RootPath+'jquery.jscrollpane.js',
+    RootPath+'phoenix.base.js',
+    RootPath+'phoenix.Tab.js',
+    RootPath+'phoenix.Slider.js',
+    RootPath+'phoenix.Hover.js',
+    RootPath+'phoenix.Select.js',
+    RootPath+'phoenix.Timer.js',
+    RootPath+'phoenix.Mask.js',
+    RootPath+'phoenix.MiniWindow.js',
+    RootPath+'phoenix.Tip.js',
+    RootPath+'phoenix.Message.js',
+    RootPath+'phoenix.DatePicker.js',
+    RootPath+'phoenix.Ernie.js',
+    RootPath+'phoenix.SliderBar.js',
+    RootPath+'phoenix.Alive.js',
+    RootPath+'phoenix.SideTip.js'
+]
+BaseJSlist.concatName = 'base-all.js';
+BaseJSlist.distPath = 'dist/js';
+
+
+var scriptsGameList = [
+    RootPath+'game/phoenix.Games.js',
+    RootPath+'game/phoenix.Game.js',
+    RootPath+'game/phoenix.GameMethod.js',
+    RootPath+'game/phoenix.GameMessage.js',
+    RootPath+'game/phoenix.GameTypes.js',
+    RootPath+'game/phoenix.GameStatistics.js',
+    RootPath+'game/phoenix.GameOrder.js',
+    RootPath+'game/phoenix.GameTrace.js',
+    RootPath+'game/phoenix.GameSubmit.js',
+    RootPath+'game/phoenix.GameRecords.js',
+    RootPath+'game/ssc/phoenix.Games.SSC.js',
+    RootPath+'game/ssc/phoenix.Games.SSC.Danshi.js',
+    RootPath+'game/ssc/phoenix.Games.SSC.Message.js',
+    RootPath+'game/n115/phoenix.Games.N115.js',
+    RootPath+'game/n115/phoenix.Games.N115.Danshi.js',
+    RootPath+'game/n115/phoenix.Games.N115.Message.js'
+]
+
+scriptsGameList.concatName = 'base-all.js';
+scriptsGameList.distPath = 'dist/js';
+
+
+
+
+
+var gulp = require('gulp'),
+    minifyHTML = require('gulp-minify-html'),
+    minifycss = require('gulp-minify-css'),
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat'),
+    rename = require('gulp-rename'),
+    del = require('del');
+
+
+//压缩合并css
+gulp.task('minifycss', function() {
+    return gulp.src('css/*.css')//文件源
+        .pipe(minifycss())//执行压缩
+        .pipe(concat("main.css"))//执行合并
+        .pipe(rename({suffix: '.min'}))//重命名
+        .pipe(gulp.dest('destcss'))//输出文件夹
+});
+//压缩合并js
+gulp.task('minifyjs', function() {
+    return gulp.src('src/*.js')
+        .pipe(concat('main.js')) //合并所有js到main.js //.pipe(gulp.dest('dest')) //输出main.js到文件夹
+        .pipe(rename({suffix: '.min'}))////rename压缩后的文件名
+        .pipe(uglify()) //压缩
+        .pipe(gulp.dest('destjs')); //输出
+});
+
+gulp.task('scripts-base', function() {
+    return gulp.src(BaseJSlist)
+        .pipe(concat(BaseJSlist.concatName)) //合并所有js到main.js //.pipe(gulp.dest('dest')) //输出main.js到文件夹
+        .pipe(gulp.dest(BaseJSlist.distPath))
+        .pipe(rename({suffix: '.min'}))////rename压缩后的文件名
+        .pipe(uglify()) //压缩
+        .pipe(gulp.dest(BaseJSlist.distPath)); //输出
+});
+
+gulp.task('scripts-game', function() {
+    return gulp.src(scriptsGameList)
+        .pipe(concat(scriptsGameList.concatName)) //合并所有js到main.js //.pipe(gulp.dest('dest')) //输出main.js到文件夹
+        .pipe(gulp.dest(scriptsGameList.distPath))
+        .pipe(rename({suffix: '.min'}))////rename压缩后的文件名
+        .pipe(uglify()) //压缩
+        .pipe(gulp.dest(scriptsGameList.distPath)); //输出
+});
+
+gulp.task('login', function() {
+    return gulp.src(scriptsGameList)
+        .pipe(concat(scriptsGameList.concatName)) //合并所有js到main.js //.pipe(gulp.dest('dest')) //输出main.js到文件夹
+        .pipe(gulp.dest(scriptsGameList.distPath))
+        .pipe(rename({suffix: '.min'}))////rename压缩后的文件名
+        .pipe(uglify()) //压缩
+        .pipe(gulp.dest(scriptsGameList.distPath)); //输出
+});
+
+
+
+gulp.task('default',['','']);
+
+```
