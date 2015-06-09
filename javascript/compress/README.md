@@ -57,3 +57,26 @@ gulp
 即可
 #### dest是合并好的main.js文件，compress下的压缩好的文件main.js
 
+
+
+#以此类推
+##压缩css并合并css文件
+如项目下有一个css文件夹
+添加css压缩任务
+
+```js
+
+gulp.task('minifycss', function() {
+    return gulp.src('css/*.css')//文件源
+    .pipe(minifycss())//执行压缩
+    .pipe(concat("main.css"))//执行合并
+    .pipe(gulp.dest('destcss'))//输出文件夹
+});
+
+
+```
+
+
+
+
+
