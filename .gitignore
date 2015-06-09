@@ -215,6 +215,8 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 .metadata
+java/.metadata
+
 *bin
 *.settings
 *.project
