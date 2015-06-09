@@ -129,4 +129,8 @@ gulp.task('default',['minifyjs','minifycss','minifyhtml']);
 gulp
 ```
 
+执行结果如下图：
+![alt](https://raw.githubusercontent.com/richardgong1987/openMaterial/master/javascript/compress/resultproject.png)
+
+
 
