@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="023f6e28-c231-4e05-82a1-32863faff21c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/lazyload/README.md" afterPath="$PROJECT_DIR$/javascript/lazyload/README.md" />
-    </list>
+    <list default="true" id="023f6e28-c231-4e05-82a1-32863faff21c" name="Default" comment="" />
     <ignored path="openMaterial.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
