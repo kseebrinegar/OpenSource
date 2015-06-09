@@ -79,4 +79,14 @@ gulp.task('minifycss', function() {
 
 
 
+##压缩html并合并html文件
+```js
+gulp.task('minifyhtml', function() {
+    return gulp.src('html/*.html')//文件源
+    .pipe(minifyHTML())//执行压缩
+    .pipe(concat("main.html"))//执行合并
+    .pipe(rename({suffix: '.min'}))//重命名
+    .pipe(gulp.dest('desthtml'))//输出文件夹
+});
 
+```
