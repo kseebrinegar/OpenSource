@@ -1,6 +1,6 @@
 # 使用gulp压缩并合并js,css,html文件教程
 ###例如：一个项目名叫：NodeTest，
-###该项目下有src文件目录，如下图
+###文件结构，如下图
 ![alt](https://raw.githubusercontent.com/richardgong1987/openMaterial/master/javascript/compress/project.png)
 
 #### window，mac端的同学，先确保安装好nodejs在自己的机器上,然后，cd 到你的项目文件根目录下
