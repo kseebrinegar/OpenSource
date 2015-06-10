@@ -7,7 +7,7 @@
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-#######首先安装ncftp
+######首先安装ncftp
 ```sh
 brew install ncftp
 ```
@@ -15,7 +15,7 @@ brew install ncftp
 
 例如你的ftp服务器地址是：127.0.0.1  用户名是：richard  密码是：123456
 
-#######连接ftp服务
+######连接ftp服务
 ```sh
 ncftp -u  richard -p 123456 127.0.0.1
 ```
