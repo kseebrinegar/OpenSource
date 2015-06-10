@@ -37,5 +37,5 @@ Logged in to 127.0.0.1.
 ######批量下载文件
 ```sh
  put -fr /filespath
-```sh
+```
 
