@@ -1,11 +1,17 @@
 
 #在mac上使用ncftp来上传你的文件
 
+
+如果没有brew的同学可以执行如下命令安装brew
+```sh
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
 #######首先安装ncftp
 ```sh
-
 brew install ncftp
 ```
+
 
 例如你的ftp服务器地址是：127.0.0.1  用户名是：richard  密码是：123456
 
