@@ -1,7 +1,7 @@
 #nodejs下实现restful风格
-*建立一个名为restfull的nodejs项目
-*cd到你的项目下
-*安装express
+* 建立一个名为restfull的nodejs项目
+* cd到你的项目下
+* 安装express
 ```sh
 npm install express
 ```
@@ -26,7 +26,7 @@ app.listen(8888);
 ```
 
 
-*执行命令
+* 执行命令
 
 ```sh
 node rest.js
