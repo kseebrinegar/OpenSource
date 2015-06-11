@@ -1,20 +1,18 @@
 /**
  * Created by richardgong on 6/11/15.
  */
-var express = require('express') //加载模块
-var app = express() //实例化之
+var map = {"1": {id: 1, name: "richard"}, "2": {id: 2, name: "ricahrd"}} //返回json数据
 
-var map = {"1": {id: 1, name: "richard"}, "2": {id: 2, name: "ricahrd"}} //定义一个集合资源，key为字符串完全是模仿java MAP<T,E>，否则谁会这么去写个hash啊！
-
-app.get('/restfull/api', function (req, res) { //Restful Get方法,查找整个集合资源
+app.get('/restfull/api', function (req, res) { //提供api '/restfull/api' Get方法,查找整资源
     res.set({'Content-Type': 'text/json', 'Encodeing': 'utf8'});
     res.send(map)
 })
-app.get('/restfull/api/:id', function (req, res) { //Restful Get方法,查找一个单一资源
+app.get('/restfull/api/:id', function (req, res) { //提供 ‘/restfull/api’ Get方法,查找一个单一资源
     res.set({'Content-Type': 'text/json', 'Encodeing': 'utf8'});
     res.send(map[req.param('id')])
     //console.log(req.param('id'))
 })
+
 //app.post('/devices/', express.bodyParser(), function (req, res) { //Restful Post方法,创建一个单一资源
 //    res.set({'Content-Type': 'text/json', 'Encodeing': 'utf8'});
 //    map[req.body.id] = req.body
