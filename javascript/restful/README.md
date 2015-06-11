@@ -5,7 +5,7 @@
 ```sh
 npm install express
 ```
-*安装好了后，创建文件rest.js 添加如下代码
+* 安装好了后，创建文件rest.js 添加如下代码
 ```js
 
 var map = {"1": {id: 1, name: "richard"}, "2": {id: 2, name: "ricahrd"}} //返回json数据
