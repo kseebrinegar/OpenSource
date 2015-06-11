@@ -3,11 +3,11 @@
 ###这种报错的解决办法
 
 Download the full installer
-1.   Open the DMG and then show the package content of the installer
-2.   Copy the content of the Show Package contents to a separate folder
-3.   Delete the CodeSignature folder
-4.   From SystemPrefences temporarly enable "Allow apps downloaded from Anywhere" (in your Security & Privacy settings)
-5.   Edit the file MacOS/standard-install and add the following to the vmargs: "-Dcom.genuitec.pulse.debug.memory.check=true"
+*   Open the DMG and then show the package content of the installer
+*   Copy the content of the Show Package contents to a separate folder
+*   Delete the CodeSignature folder
+*   From SystemPrefences temporarly enable "Allow apps downloaded from Anywhere" (in your Security & Privacy settings)
+*   Edit the file MacOS/standard-install and add the following to the vmargs: "-Dcom.genuitec.pulse.debug.memory.check=true"
 ```sh
 #!/bin/sh
 dir=`dirname "$0"`
