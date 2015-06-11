@@ -222,6 +222,6 @@ java/.metadata
 *.project
 *.classpath
 *bin
-
+node_modules
 
 
