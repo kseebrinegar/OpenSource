@@ -31,7 +31,7 @@ app.listen(8888);
 ```sh
 node rest.js
 ```
-
-
+###如下应该如下图
+![alt](https://raw.githubusercontent.com/richardgong1987/openMaterial/master/javascript/compress/project.png)
 
 
