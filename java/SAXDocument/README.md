@@ -1,4 +1,5 @@
-#Use SAX to parse XML
+Anthor:richardgong
+#Use java SAX to parse XML
 if you wanna parser xml in use SAX
 
 we need four java Object
