@@ -1,25 +1,27 @@
 
-#在mac上使用ncftp来上传你的文件
+#Use ncftp to down or update you source
 
 
-如果没有brew的同学可以执行如下命令安装brew
+If you dont have brew  pass below command
+
 ```sh
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-######首先安装ncftp
+######get started, install ncftp
 ```sh
 brew install ncftp
 ```
 
 
-例如你的ftp服务器地址是：127.0.0.1  用户名是：richard  密码是：123456
+if your ftp host is：127.0.0.1  username ：richard  password：123456
 
-######连接ftp服务
+######connect ftp service
 ```sh
 ncftp -u  richard -p 123456 127.0.0.1
 ```
-连接成功后，应该有像如下的提示：
+
+After sucessfull it should print a message like below:
 
 ```sh
 NcFTP 3.2.5 (Feb 02, 2011) by Mike Gleason (http://www.NcFTP.com/contact/).
@@ -30,9 +32,9 @@ Login successful.
 Logged in to 127.0.0.1.
 ```
 
-这就表示你连接成功了
+That's mean you have connected service
 
-######批量上传文件
+######update your file
 
 ```sh
 
@@ -40,7 +42,7 @@ Logged in to 127.0.0.1.
 
  ```
 
-######批量下载文件
+######download your file
 ```sh
  put -fr /filespath
 ```
