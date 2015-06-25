@@ -28,4 +28,7 @@ this mean: tempate store compare with workspace
  
  
  
+ aaaaaaaaaaaaaaa
+ 
+ 
 
