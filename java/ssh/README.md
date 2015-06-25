@@ -11,7 +11,7 @@ mac本来就是unix系统。所以对登陆linux服务器是有非常好原生�
 
 那么在终端上输入
 ```
-ssh soho@10.3.88.119
+ssh soho@100.162.88.100
 ```
 回车后，会要求输入密码如下
 ```
@@ -30,11 +30,11 @@ soho@100.162.88.100's password:
 
 那么在git上输入
 ```
-ssh soho@10.3.88.119
+ssh soho@100.162.88.100
 ```
 回车后，会出现如下提示：
 ```
-The authenticity of host '10.3.88.119 (10.3.88.119)' can't be established
+The authenticity of host '100.162.88.100 (100.162.88.100)' can't be established
 RSA key fingerprint is 0f:de:3e:d1:80:cf:22:0f:49:1a:77:0a:e5:15:b8:50.
 Are you sure you want to continue connecting (yes/no)?
 ```
