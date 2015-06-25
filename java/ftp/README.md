@@ -1,5 +1,5 @@
 
-#Use ncftp to down or update you source
+#Use ncftp to down or update you source on mac
 
 
 If you dont have brew  pass below command
