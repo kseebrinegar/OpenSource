@@ -20,7 +20,7 @@ soho@100.162.88.100's password:
 输入正确密码后，就成功愉快的登陆了
 
 ###2. window下登陆
-在window下登陆的话，如果有安装有git客户端的同学，直接可以用git登陆
+在window下登陆的话，如果有安装有git客户端的同学，直接可以用git登陆,登陆方法几乎和mac一样
 例如：
 >服务器地址:100.162.88.100
 
@@ -32,7 +32,14 @@ soho@100.162.88.100's password:
 ```
 ssh soho@10.3.88.119
 ```
-回车后，会要求输入密码如下
+回车后，会出现如下提示：
+```
+The authenticity of host '10.3.88.119 (10.3.88.119)' can't be established
+RSA key fingerprint is 0f:de:3e:d1:80:cf:22:0f:49:1a:77:0a:e5:15:b8:50.
+Are you sure you want to continue connecting (yes/no)?
+```
+然后，输入"yes",然后回车
+会出来如下，需要我们输入密码
 ```
 soho@100.162.88.100's password:
 ```
