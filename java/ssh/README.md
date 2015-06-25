@@ -1,4 +1,4 @@
-#在mac或者window上登陆ssh服务器的方法
+#在mac，window上登陆ssh服务器的方法
 
 ###1.  mac上登陆
 mac本来就是unix系统。所以对登陆linux服务器是有非常好原生的支持，直接打开mac自带的terminal登陆
