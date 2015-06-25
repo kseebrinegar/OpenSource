@@ -8,5 +8,6 @@ git commit -m'first commit'
 the short operative is:
 
 ```
-git commit -am
+git commit -am'test comm'
+
 
