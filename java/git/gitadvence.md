@@ -24,11 +24,8 @@ this mean: tempate store compare with workspace
  ```
  git checkout (file name)
  ```
-#four git commit -amend
- 
- 
- 
- aaaaaaaaaaaaaaa
+#four git commit --amend
+ use cancel before commit
  
  
 
