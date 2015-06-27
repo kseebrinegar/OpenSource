@@ -59,7 +59,7 @@ here use
 ```
 context && context.nodeType ? context.ownerDocument || context : document,
 ```
-convert to DOM
+handler if context is DOM
 
 handler:$('li',iframe), to create html in iframe,**context** must be native DOM object
 
@@ -67,6 +67,13 @@ handler:$('li',iframe), to create html in iframe,**context** must be native DOM 
 					if ( rsingleTag.test( match[1] ) && jQuery.isPlainObject( context ) ) {
 ```
 handler:$('li',{title:1,id:"id"}), HANDLE: $(html, props)
+
+```
+					if ( elem && elem.parentNode ) {
+```
+
+					Check parentNode to catch when Blackberry 4.6 returns
+					nodes that are no exite
 
 
 
@@ -76,7 +83,10 @@ handler:$('li',{title:1,id:"id"}), HANDLE: $(html, props)
 		} else if ( selector.nodeType ) {
 
 ```
+
 in case:$(document),$(element),$(this)
+
+
 
 
 ####4.
@@ -97,11 +107,17 @@ in case:$(function(){})
 
 ```
 
-in case: $([]),$({});
+in case:$($('.div')), things like this
+
+```
+		jQuery.makeArray( selector, this );
+```
+
+conert it to arraylike object,e.g:{0:'aa',1:'bb',length:2}
 
 
 
-
+##
 
 
 
