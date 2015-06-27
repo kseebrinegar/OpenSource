@@ -28,10 +28,14 @@ jQuery.prototype.init = jQuery.prototype;
 ```
 rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/
 ```
-should match as like: '\<p> pppp   or  #myid'
+should match as like: \<p> pppp   or  #myid'
 ```
 rsingleTag = /^<(\w+)\s*\/?>(?:<\/\1>|)$/
 ```
-should match as like:'\<div></div> ,\<p></p>'
+should match as like:\<div></div> ,\<p></p>'
+```
+rdashAlpha = /-([\da-z])/gi,
+```
+in case:'-2d',or '-3d' css typle
 
 
