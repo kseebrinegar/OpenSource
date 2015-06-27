@@ -51,7 +51,22 @@ in case:$('\<div>hello world')
 			if ( match && (match[1] || !context) ) {
 ```
 handler create html,or,id, e.g:$('\<li>'),$("#id")
+```
+					context = context instanceof jQuery ? context[0] : context;
+```
+here use
 
+```
+context && context.nodeType ? context.ownerDocument || context : document,
+```
+convert to DOM
+
+handler:$('li',iframe), to create html in iframe,**context** must be native DOM object
+
+```
+					if ( rsingleTag.test( match[1] ) && jQuery.isPlainObject( context ) ) {
+```
+handler:$('li',{title:1,id:"id"}), HANDLE: $(html, props)
 
 
 
