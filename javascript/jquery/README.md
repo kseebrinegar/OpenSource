@@ -3,7 +3,7 @@
 (function(){
 
 ###1.[define init variable and fun:line 21-94](https://github.com/richardgong1987/OpenSource/blob/master/javascript/jquery/init.md)
-###2.[add get and set method:line 96-283](https://github.com/richardgong1987/OpenSource/blob/master/javascript/jquery/init.md)
+###2.[add get and set method:line 96-283](https://github.com/richardgong1987/OpenSource/blob/master/javascript/jquery/init1.md)
 ###3.[cread extend() user for inherit:line 285-347](https://github.com/richardgong1987/OpenSource/blob/master/javascript/jquery/init.md)
 ###4.[extend tool method:line 349-817](https://github.com/richardgong1987/OpenSource/blob/master/javascript/jquery/init.md)
 ###5.[sizzle selector:line 877-2856](https://github.com/richardgong1987/OpenSource/blob/master/javascript/jquery/init.md)

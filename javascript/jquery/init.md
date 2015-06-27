@@ -1,4 +1,4 @@
-#jquery
+#jquery init
 ##1. reset undefined;
 ```
 core_strundefined = typeof undefined,
