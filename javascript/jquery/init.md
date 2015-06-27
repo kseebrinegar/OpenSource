@@ -24,6 +24,14 @@ jQuery.prototype.init = jQuery.prototype;
 
 ```
 
-
+### 3. regex
+```
+rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/
+```
+should match as like: '\<p> pppp   or  #myid'
+```
+rsingleTag = /^<(\w+)\s*\/?>(?:<\/\1>|)$/
+```
+should match as like:'\<div></div> ,\<p></p>'
 
 
