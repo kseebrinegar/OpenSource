@@ -22,6 +22,30 @@ In case: $(''),$(null),$(undefined),$(false)
 if ( typeof selector === "string" )
 ```
 In case:$("#id"),$(".class"),$("div"),$("#id .class div.div"),$('\<li>'),$("\<div>1</div>");
+**(1)**
+```
+	if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {
+```
+in case:$('\<div></div>'),$('\div')
+
+```
+				match = [ null, selector, null ];
+```
+Use for construct a constructiv regex
+
+
+**(2)**
+```
+				match = rquickExpr.exec( selector );
+```
+in case:$('\<div>hello world')
+```
+	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/;
+```
+> 1. $('\<li>hello') will match:["<li>", "<li>", undefined]
+
+> 2. $('<li>test</li>hello') will match:will return:["<li>test</li>", "<li>test</li>", undefined]
+
 
 
 ####3.
