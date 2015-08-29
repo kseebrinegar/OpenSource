@@ -18,8 +18,12 @@ Listen 85
 
 VirtualHost *:端口
 
-如:
+DocumentRoot "文件地址"
 
+<Directory "文件地址">
+	权限	
+</Directory>
+如:
 ```
 <VirtualHost *:85>  
     DocumentRoot "C:\kod-ui\webapp\client"  
