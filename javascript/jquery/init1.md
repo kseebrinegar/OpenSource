@@ -117,7 +117,8 @@ conert it to arraylike object,e.g:{0:'aa',1:'bb',length:2}
 
 
 
-##
+##3.pushStack: function( elems )
+
 
 
 
