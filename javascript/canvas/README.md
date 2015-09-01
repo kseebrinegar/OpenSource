@@ -1,3 +1,3 @@
-#随机算法加三角函数demo
+#randomball为随机算法加三角函数 demo
 
-#重力加速度demo
+#andomball为重力加速度demo
