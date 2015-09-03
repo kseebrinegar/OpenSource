@@ -44,7 +44,4 @@ js
     //3.fillText方法，第一个参数代表：要填入的文字。第二，三个参数代表：文字绘制的起始坐标（x,y)。 第四个参数代表：[可选]允许的最大文本宽度，以像素计。
     context.fillText("Hello Canvas", canvas.width/2,canvas.height/2);
 
-//    context.strokeText("Hello Canvas", canvas.width/2 - 150,
-//            canvas.height/2 + 15 );
-
 ```
