@@ -78,12 +78,42 @@ js
     context.fill();
 ```
 
-####2.breathe circle
-key word:
+####2.breathe circle呼吸的球.
+key word:scale
 
+这里的控制致关重要.用来控制放大的比例.很微妙
+```js
+ scaleX = scaleY =1+ Math.sin(angel);
+```
 js
 
 ```js
+  var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var scaleY = 1;
+    var scaleX = 1;
+    var angel = 1;
+    function draw() {
+        context.save();
+        context.translate(canvas.width / 2, canvas.height / 2);
+        angel+=0.05;
+        scaleX = scaleY =1+ Math.sin(angel);
+        //1.scale(scalewidth,scaleheight).缩放当前绘图的宽高 (1=100%, 0.5=50%, 2=200%, 依次类推)
+        //注意这里:scale一定要在beginPath之前,不然,无法放大功能
+        context.scale(scaleX, scaleY);
+        context.beginPath();
+        context.arc(0, 0, 100, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fillStyle = 'green';
+        context.fill();
+        context.restore();
+    }
+
+    (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, 500, 500);
+        draw();
+    }());
 
 
 ```

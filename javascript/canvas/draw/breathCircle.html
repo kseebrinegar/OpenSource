@@ -1,18 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+    <title></title>
 </head>
 <body>
 <canvas id="canvas" width="400" height="400"></canvas>
 <style>
-    body{background: #000000;}
-    canvas{background: #ffffff;}
+    body {
+        background: #000000;
+    }
+
+    canvas {
+        background: #ffffff;
+    }
+
+    input {
+        background: #ffffff;
+    }
 </style>
 <script>
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
+    var scaleY = 1;
+    var scaleX = 1;
+    var angel = 1;
+    function draw() {
+        context.save();
+        context.translate(canvas.width / 2, canvas.height / 2);
+        angel+=0.05;
+        scaleX = scaleY =1+ Math.sin(angel);
+        //1.scale(scalewidth,scaleheight).缩放当前绘图的宽高 (1=100%, 0.5=50%, 2=200%, 依次类推)
+        //注意这里:scale一定要在beginPath之前,不然,无法放大功能
+        context.scale(scaleX, scaleY);
+        context.beginPath();
+        context.arc(0, 0, 100, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fillStyle = 'green';
+        context.fill();
+        context.restore();
+    }
 
+    (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, 500, 500);
+        draw();
+    }());
+
+
+    //    function Ball() {
+    //        this.x = 0;
+    //        this.y = 0;
+    //        this.radius = 50;
+    //        this.scaleX = 5;
+    //        this.scaleY = 5;
+    //        this.color = "#ff0000";
+    //    }
+    //
+    //    Ball.prototype.draw = function (context) {
+    //        context.save();
+    //        context.translate(this.x, this.y);
+    //        context.scale(this.scaleX, this.scaleY);
+    //        context.fillStyle = this.color;
+    //        context.beginPath();
+    //        context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
+    //        context.closePath();
+    //        context.fill();
+    //        context.restore();
+    //    };
+    //
+    //    var canvas = document.getElementById('canvas');
+    //    var context = canvas.getContext('2d');
+    //    var ball = new Ball();
+    //    var angle = 0;
+    //    var centerScale = 1;
+    //    var range = 0.5;
+    //    var speed = 0.1;
+    //
+    //    ball.x = canvas.width / 2;
+    //    ball.y = canvas.height / 2;
+    //
+    //    context.clearRect(0, 0, canvas.width, canvas.height);
+    //    ball.scaleX = ball.scaleY = centerScale + Math.sin(angle) * range;
+    //    angle += speed;
+    //    ball.draw(context);
+    //
+    //    (function drawFrame() {
+    //        window.requestAnimationFrame(drawFrame, canvas);
+    //        context.clearRect(0, 0, canvas.width, canvas.height);
+    //        ball.scaleX = ball.scaleY = centerScale + Math.sin(angle) * range;
+    //        angle += speed;
+    //        ball.draw(context);
+    //
+    //    }());
 </script>
 
 </body>
