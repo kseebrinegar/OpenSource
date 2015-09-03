@@ -2,6 +2,9 @@
 
 #1.画圆
 
+key word:arc
+
+
 html
 ```html
 <canvas id="canvas" width="400" height="400"></canvas>
@@ -35,6 +38,8 @@ js
 #2.写字
 
 ##(1)写字填充fillText
+key word:fillText
+
 js
 ```js
     var canvas = document.getElementById('canvas');
@@ -50,6 +55,9 @@ js
 ```
 
 ##（2）对文字描边strokeText
+
+key word:strokeText
+
 js
 
 ```js
