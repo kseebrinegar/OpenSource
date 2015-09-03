@@ -29,3 +29,22 @@ js
     //最后一步，填充，结束
     context.fill();
 ```
+
+#2.写字
+js
+
+```js
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    //1.设置文字大小和字体，这里跟设置css一样。
+    context.font="40px Arial";
+    //2.设置文字的颜色（所有设置颜色都可以用fillStyle
+    context.fillStyle="red";
+    //3.fillText方法，第一个参数代表：要填入的文字。第二，三个参数代表：文字绘制的起始坐标（x,y)。 第四个参数代表：[可选]允许的最大文本宽度，以像素计。
+    context.fillText("Hello Canvas", canvas.width/2,canvas.height/2);
+
+//    context.strokeText("Hello Canvas", canvas.width/2 - 150,
+//            canvas.height/2 + 15 );
+
+```
