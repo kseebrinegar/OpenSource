@@ -81,15 +81,13 @@ js
 ####2.breathe circle呼吸的球.
 key word:scale
 
-这里的控制致关重要.用来控制放大的比例.很微妙
+这里用三角函数的控制致关重要.用来控制放大的比例,才能作到呼吸的效果
 ```js
-
 //三角函数公式:f(x)=A+sin(Q)*B;
 //A代表初相,B代表振副
  scaleX = scaleY =1+ Math.sin(angel)*1/2;
 ```
 js
-
 ```js
   var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
