@@ -1,1 +1,31 @@
 #1.画圆
+
+html
+```html
+<canvas id="canvas" width="400" height="400"></canvas>
+<style>
+    body{background: #000000;}
+    canvas{background: #ffffff;}
+</style>
+
+```
+
+js
+```js
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    //1.translate方法，用于平移画布，注意：舞台和画布是不一样的。这里的舞台指的是canvas这个html5元素,画布就是画布。。
+    context.translate(canvas.width/2,canvas.height/2);//canvas.width/2,canvas.height/2这里移动画布到舞台中间。
+    //(1)开始一个路径（想像机器人的手）
+    context.beginPath();
+    //（2）arc前两个参数代表圆心座标：(x,y)。 第三个参数代表：半径。 第四个参数代表：起始角（弧度制），第五个参数代表：结束角（弧度制），第六个参数代表：规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。
+    context.arc(0,0,50,0,(Math.PI * 2),true);
+    //(3)结束路径
+    context.closePath();
+
+    //(4)添加填充颜色
+    context.fillStyle = "#ff0000";
+
+    //最后一步，填充，结束
+    context.fill();
+```
