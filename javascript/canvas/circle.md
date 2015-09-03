@@ -1,5 +1,15 @@
 #canvas简单画图
 
+
+####html
+```html
+<canvas id="canvas" width="400" height="400"></canvas>
+<style>
+    body{background: #000000;}
+    canvas{background: #ffffff;}
+</style>
+```
+
 #1.写字
 
 ####(1)写字填充fillText
@@ -48,15 +58,6 @@ js
 key word:arc
 
 
-html
-```html
-<canvas id="canvas" width="400" height="400"></canvas>
-<style>
-    body{background: #000000;}
-    canvas{background: #ffffff;}
-</style>
-
-```
 
 js
 ```js
