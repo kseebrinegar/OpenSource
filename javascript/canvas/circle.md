@@ -37,7 +37,7 @@ js
 
 #2.写字
 
-##(1)写字填充fillText
+####(1)写字填充fillText
 key word:fillText
 
 js
@@ -54,7 +54,7 @@ js
 
 ```
 
-##（2）对文字描边strokeText
+####（2）对文字描边strokeText
 
 key word:strokeText
 
@@ -76,3 +76,8 @@ js
     context.strokeText("Hello Canvas", canvas.width/2-100, canvas.height/2 );
 
 ```
+
+
+
+
+
