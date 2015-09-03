@@ -83,7 +83,10 @@ key word:scale
 
 这里的控制致关重要.用来控制放大的比例.很微妙
 ```js
- scaleX = scaleY =1+ Math.sin(angel);
+
+//三角函数公式:f(x)=A+sin(Q)*B;
+//A代表初相,B代表振副
+ scaleX = scaleY =1+ Math.sin(angel)*1/2;
 ```
 js
 
