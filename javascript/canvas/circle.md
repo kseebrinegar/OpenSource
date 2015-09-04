@@ -52,7 +52,7 @@ js
 
 ```
 
-#2line
+#2line 画线
 key word:lineTo,stroke
 
 js
