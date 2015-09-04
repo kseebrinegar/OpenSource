@@ -194,19 +194,22 @@ key word:translate
 
 key word:translate
 
-moveX+=1:用于移动
+moveX+=1:moveX+=speed,speed+=0.5:用于加速度
 ```js
 moveX+=1
 ```
 
 js
 ```js
- var canvas = document.getElementById('canvas');
+  var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     var moveX = 0;
+    var speed = 0.1;
+
     function draw() {
         context.save();
-        context.translate(moveX+=1, canvas.height / 2);
+        speed+=0.5;
+        context.translate(moveX+=speed, canvas.height / 2);
         context.beginPath();
         context.arc(0, 0, 100, 0, (Math.PI * 2), true);
         context.closePath();
@@ -217,7 +220,7 @@ js
 
     (function drawFrame() {
         window.requestAnimationFrame(drawFrame, canvas);
-        context.clearRect(0, 0, 500, 500);
+        context.clearRect(0, 0, 2000, 2000);
         draw();
     }());
 ```
