@@ -52,8 +52,32 @@ js
 
 ```
 
+#2line 画线
+key word:lineTo,stroke
 
-#2.画圆
+js
+```js
+  var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var offsetLeft = canvas.offsetLeft;
+    var offsetTop = canvas.offsetTop;
+
+    context.fillStyle = 'green';
+    context.lineWidth = 1;
+    context.beginPath();
+    canvas.addEventListener('mousemove',function(e){
+        draw(e.pageX-offsetLeft, e.pageY-offsetTop)
+    },false);
+    function draw(x,y) {
+        context.lineTo(x,y);
+      context.stroke();
+    }
+
+```
+
+
+
+#3.画圆
 ####1.circle
 key word:arc
 
@@ -122,4 +146,85 @@ js
 
 ####3.random circle随机运动的球.
 
+####3. 运动的球.
+key word:translate
 
+这里用三角函数的控制致关重要.用来控制放大的比例,才能作到运动的效果
+```js
+//三角函数公式:f(x)=A+sin(Q)*B;f(y)=A+cos(Q)*B
+//A代表初相,B代表振副
+```
+**注意：atan(Q) = b/a; 求角度的方法：Q = Math.atan(b/a)/(2*Math.PI)*360;**
+
+```js
+
+ var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var scaleY = 1;
+    var scaleX = 1;
+    var angel = 1;
+
+    function draw() {
+        context.save();
+
+        scaleX = 200+ Math.sin(angel)*100;
+        scaleY = 200+Math.cos(angel)*100;
+
+        context.translate(scaleX,scaleY);
+        angel+=0.05;
+        scaleX = scaleY =1+ Math.sin(angel);
+
+        context.beginPath();
+        context.arc(0, 0, 20, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fillStyle = 'green';
+        context.fill();
+        context.restore();
+    }
+
+    (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, 500, 500);
+        angel+=0.01;
+
+        draw();
+    }());
+
+```
+###4.move circle会移动的圆
+
+key word:translate
+
+moveX+=1:moveX+=speed,speed+=0.5:用于加速度
+```js
+moveX+=1
+```
+
+js
+```js
+  var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var moveX = 0;
+    var speed = 0.1;
+
+    function draw() {
+        context.save();
+        speed+=0.5;
+        context.translate(moveX+=speed, canvas.height / 2);
+        context.beginPath();
+        context.arc(0, 0, 100, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fillStyle = 'green';
+        context.fill();
+        context.restore();
+    }
+
+    (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, 2000, 2000);
+        draw();
+    }());
+```
+
+
+#4. ball

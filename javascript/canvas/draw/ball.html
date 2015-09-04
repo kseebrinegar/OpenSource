@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="800" height="800"></canvas>
+<style>
+    body {
+        background: #000000;
+    }
+
+    canvas {
+        background: #ffffff;
+    }
+
+    input {
+        background: #ffffff;
+    }
+</style>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+
+    function draw() {
+        context.save();
+        context.translate(0, canvas.height / 2);
+        context.beginPath();
+        context.arc(0, 0, 20, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fillStyle = 'green';
+        context.fill();
+        context.restore();
+    }
+
+    (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, 800, 800);
+        draw();
+    }());
+</script>
+
+</body>
+</html>

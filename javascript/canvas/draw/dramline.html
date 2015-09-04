@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+<style>
+    body {
+        background: #000000;
+    }
+
+    canvas {
+        background: #ffffff;
+    }
+
+    input {
+        background: #ffffff;
+    }
+</style>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var offsetLeft = canvas.offsetLeft;
+    var offsetTop = canvas.offsetTop;
+
+    context.fillStyle = 'green';
+    context.lineWidth = 1;
+    context.beginPath();
+    canvas.addEventListener('mousemove',function(e){
+        draw(e.pageX-offsetLeft, e.pageY-offsetTop)
+    },false);
+    function draw(x,y) {
+        context.lineTo(x,y);
+      context.stroke();
+    }
+
+</script>
+
+</body>
+</html>
