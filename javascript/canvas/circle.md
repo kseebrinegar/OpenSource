@@ -52,8 +52,32 @@ js
 
 ```
 
+#2line
+key word:lineTo,stroke
 
-#2.画圆
+js
+```js
+  var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var offsetLeft = canvas.offsetLeft;
+    var offsetTop = canvas.offsetTop;
+
+    context.fillStyle = 'green';
+    context.lineWidth = 1;
+    context.beginPath();
+    canvas.addEventListener('mousemove',function(e){
+        draw(e.pageX-offsetLeft, e.pageY-offsetTop)
+    },false);
+    function draw(x,y) {
+        context.lineTo(x,y);
+      context.stroke();
+    }
+
+```
+
+
+
+#3.画圆
 ####1.circle
 key word:arc
 
@@ -166,27 +190,31 @@ key word:translate
     }());
 
 ```
+###4.move circle会移动的圆
 
-#line
-key word:lineTo,stroke
+key word:translate
 
 js
 ```js
-  var canvas = document.getElementById('canvas');
+ var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
-    var offsetLeft = canvas.offsetLeft;
-    var offsetTop = canvas.offsetTop;
-
-    context.fillStyle = 'green';
-    context.lineWidth = 1;
-    context.beginPath();
-    canvas.addEventListener('mousemove',function(e){
-        draw(e.pageX-offsetLeft, e.pageY-offsetTop)
-    },false);
-    function draw(x,y) {
-        context.lineTo(x,y);
-      context.stroke();
+    var moveX = 0;
+    function draw() {
+        context.save();
+        context.translate(moveX+=1, canvas.height / 2);
+        context.beginPath();
+        context.arc(0, 0, 100, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fillStyle = 'green';
+        context.fill();
+        context.restore();
     }
 
+    (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, 500, 500);
+        draw();
+    }());
 ```
+
 
