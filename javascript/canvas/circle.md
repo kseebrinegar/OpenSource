@@ -194,6 +194,11 @@ key word:translate
 
 key word:translate
 
+moveX+=1:用于移动
+```js
+moveX+=1
+```
+
 js
 ```js
  var canvas = document.getElementById('canvas');
