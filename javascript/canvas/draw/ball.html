@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-<canvas id="canvas" width="400" height="400"></canvas>
+<canvas id="canvas" width="800" height="800"></canvas>
 <style>
     body {
         background: #000000;
@@ -21,15 +21,13 @@
 <script>
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
-    var moveX = 0;
-    var speed = 0.1;
+
 
     function draw() {
         context.save();
-        speed+=0.1;
-        context.translate(moveX+=speed, canvas.height / 2);
+        context.translate(0, canvas.height / 2);
         context.beginPath();
-        context.arc(0, 0, 100, 0, (Math.PI * 2), true);
+        context.arc(0, 0, 20, 0, (Math.PI * 2), true);
         context.closePath();
         context.fillStyle = 'green';
         context.fill();
@@ -38,7 +36,7 @@
 
     (function drawFrame() {
         window.requestAnimationFrame(drawFrame, canvas);
-        context.clearRect(0, 0, 2000, 2000);
+        context.clearRect(0, 0, 800, 800);
         draw();
     }());
 </script>
