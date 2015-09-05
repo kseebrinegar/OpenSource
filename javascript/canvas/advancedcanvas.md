@@ -84,7 +84,7 @@ key word:translate,         vx *= bounce;        vy += gravity;
 
 
 ```
-####2.动量的应用
+##2.动量的应用
 
 * 动量 = 质量x速度,p = m x v;
 
@@ -190,4 +190,4 @@ js
 ```
 
 
-
+##
