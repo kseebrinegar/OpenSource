@@ -84,3 +84,51 @@ key word:translate,         vx *= bounce;        vy += gravity;
 
 
 ```
+####2.动量的应用
+
+* 动量 = 质量x速度,p = m x v;
+
+如:4kg x 15m/s = 60kg m/s
+
+* 动量守衡定理:系统在碰撞前总动量等于系统碰撞后总动量
+
+A+B = B+A;
+
+* A,B两个球在碰撞前和碰撞后动量可以表达成:m1 + m0 = m0f + m1f;
+
+(物体A质量x物体A速度)+(物体B质量x物体B速度)=(物体A质量x物体A最终速度)+(物体B质量x物体B最终速度);
+
+* 动能公式=1/2 x 质量 x 速度²; KE = 0.5m x v²
+ 
+KE0  KE1 = KE0Final+KE1Final;
+于是有:
+= 
+ 
+(0.5m x m0 x v²) + (0.5m x m1 x v²) = (0.5m x m0 x Final²) + (0.5m x m1 x Final²);
+ 
+再有: 
+= 
+
+(m x m0 x v²) + (m x m1 x v²) = (m x m0 x Final²) + (m x m1 x Final²);
+
+
+
+
+
+
+
+
+
+
+
+动量实例
+
+js
+
+```js
+
+
+```
+
+
+

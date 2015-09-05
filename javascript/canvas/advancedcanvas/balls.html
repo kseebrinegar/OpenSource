@@ -21,10 +21,10 @@
 </style>
 <script>
     //一,创建球对象
-    function Ball (radius) {
+    function Ball(radius) {
         this.x = 0;
         this.y = 0;
-        this.radius =radius ||  20;
+        this.radius = radius || 20;
         this.vx = 0;
         this.vy = 0;
     }
@@ -39,28 +39,42 @@
         context.fill();
         context.restore();
     };
-    //二,创建边检对象
-    function checkCollision (ball0, ball1) {
-        //两个球x,y坐标
-        var dx = ball1.x - ball0.x;
-        var dy = ball1.y - ball0.y;
-        //利用勾股定理求出两个球在任何位置的两个圆心的距离.
-       var  dist = Math.sqrt(dx * dx + dy * dy);
-        //能进这个if的,说明两球已经想碰
+
+
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var ball0 = new Ball(80),
+            ball1 = new Ball(40),
+            bounce = -1.0;
+    ball0.mass = 1;
+    ball0.x = canvas.width - 200;
+    ball0.y = canvas.height - 200;
+    ball0.vx = Math.random() * 10 - 5;
+    ball0.vy = Math.random() * 10 - 5;
+
+    ball1.mass = 1;
+    ball1.x = 100;
+    ball1.y = 100;
+    ball1.vx = Math.random() * 10 - 5;
+    ball1.vy = Math.random() * 10 - 5;
+
+    function checkCollision(ball0, ball1) {
+        var dx = ball1.x - ball0.x,
+                dy = ball1.y - ball0.y,
+                //勾股定理
+                dist = Math.sqrt(dx * dx + dy * dy);
+        //1.能进这里的,说明球已经相碰
         if (dist < ball0.radius + ball1.radius) {
             //calculate angle, sine, and cosine
-            //利用正切公式,求出角度,注意:这里是弧度制.
             var angle = Math.atan2(dy, dx),
                     sin = Math.sin(angle),
-                    cos = Math.cos(angle);
-
-
-               var  x0 = 0,
+                    cos = Math.cos(angle),
+            //rotate ball0's position
+                    x0 = 0,
                     y0 = 0,
-
+            //rotate ball1's position
                     x1 = dx * cos + dy * sin,
                     y1 = dy * cos - dx * sin,
-
             //rotate ball0's velocity
                     vx0 = ball0.vx * cos + ball0.vy * sin,
                     vy0 = ball0.vy * cos - ball0.vx * sin,
@@ -93,39 +107,38 @@
         }
     }
 
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
+    function checkWalls(ball) {
+        if (ball.x + ball.radius > canvas.width) {
+            ball.x = canvas.width - ball.radius;
+            ball.vx *= bounce;
+        } else if (ball.x - ball.radius < 0) {
+            ball.x = ball.radius;
+            ball.vx *= bounce;
+        }
+        if (ball.y + ball.radius > canvas.height) {
+            ball.y = canvas.height - ball.radius;
+            ball.vy *= bounce;
+        } else if (ball.y - ball.radius < 0) {
+            ball.y = ball.radius;
+            ball.vy *= bounce;
+        }
+    }
 
-    var ball0 = new Ball(80);
-    var  ball1 = new Ball();
-
-    //(1)定义第一个球的属性,用于绘制时需要
-    ball0.x = 50;
-    ball0.y = canvas.height / 2;
-    ball0.vx = 1;
-
-    //定义第二个球的属性,用于绘制时需要,注意这里的vx为负数.这是为了让他们往相反方向运动的需要
-    ball1.x = 300;
-    ball1.y = canvas.height / 2;
-    ball1.vx = -1;
-
-    (function drawFrame () {
+    (function drawFrame() {
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(0, 0, canvas.width, canvas.height);
-        //(2),累加数据,用于运动.
+
         ball0.x += ball0.vx;
+        ball0.y += ball0.vy;
         ball1.x += ball1.vx;
-        //(3),这里是为了算出两个球的距离
-        var dist = ball1.x - ball0.x;
-        //(4),如果两个球的半径加起来大于两个球的圆心距离.这说明两个球有相碰在一起了.
-        if (Math.abs(dist) < ball0.radius + ball1.radius) {
-            //能进这个if语句的,说明球已经相碰在一起了.这里,我们只需要给一个相反的方向给他们,就可以让他们往相反方向运动了.
-            ball0.vx *=-1;
-            ball1.vx *=-1;
-        }
+        ball1.y += ball1.vy;
+        checkCollision(ball0, ball1);
+        checkWalls(ball0);
+        checkWalls(ball1);
         ball0.draw(context);
         ball1.draw(context);
     }());
+
 </script>
 
 </body>
