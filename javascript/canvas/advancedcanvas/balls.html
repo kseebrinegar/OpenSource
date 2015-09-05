@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="400" class="aa" height="400"></canvas>
+<style>
+    body {
+        background: #000000;
+    }
+
+    canvas {
+        background: #ffffff;
+    }
+
+    input {
+        background: #ffffff;
+    }
+</style>
+<script>
+    //创建球对象
+    function Ball () {
+        this.x = 0;
+        this.y = 0;
+        this.radius = 20;
+        this.vx = 0;
+        this.vy = 0;
+    }
+    //所有画图在这个方法进行
+    Ball.prototype.draw = function (context) {
+        context.save();
+        context.translate(this.x, this.y);
+        context.fillStyle = 'green';
+        context.beginPath();
+        context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fill();
+        context.restore();
+    };
+
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    var ball0 = new Ball();
+    var  ball1 = new Ball();
+
+    //(1)定义第一个球的属性,用于绘制时需要
+    ball0.x = 50;
+    ball0.y = canvas.height / 2;
+    ball0.vx = 1;
+
+    //定义第二个球的属性,用于绘制时需要,注意这里的vx为负数.这是为了让他们往相反方向运动的需要
+    ball1.x = 300;
+    ball1.y = canvas.height / 2;
+    ball1.vx = -1;
+
+    (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        //(2),累加数据,用于运动.
+        ball0.x += ball0.vx;
+        ball1.x += ball1.vx;
+        //(3),这里是为了算出两个球的距离
+        var dist = ball1.x - ball0.x;
+        //(4),如果两个球的半径加起来大于两个球的圆心距离.这说明两个球有相碰在一起了.
+        if (Math.abs(dist) < ball0.radius + ball1.radius) {
+            //能进这个if语句的,说明球已经相碰在一起了.这里,我们只需要给一个相反的方向给他们,就可以让他们往相反方向运动了.
+            ball0.vx *=-1;
+            ball1.vx *=-1;
+        }
+        ball0.draw(context);
+        ball1.draw(context);
+    }());
+</script>
+
+</body>
+</html>
