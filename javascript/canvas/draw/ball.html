@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-<canvas id="canvas" width="800" height="800"></canvas>
+<canvas id="canvas" width="400" class="aa" height="400"></canvas>
 <style>
     body {
         background: #000000;
@@ -22,12 +22,48 @@
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
 
+    var left = 0;
+    var right = canvas.width;
+    var tops = 0;
+    var bottom = canvas.height;
+
+
+    var vx = Math.random() * 10 - 5;
+    var vy = Math.random() * 10 - 5;
+
+    var x = canvas.width/2;
+    var y = canvas.height/2;
+
+    var radius = 20;
 
     function draw() {
         context.save();
-        context.translate(0, canvas.height / 2);
+        x+=vx;
+        y+=vy;
+        //1.移位加半径>宽度值时,说明是到了右边界
+        if((x+radius)>right){
+            //定住
+            x = right - radius;
+            //用于取反往方向
+            vx *= -1;
+
+            //2.位移量减去半径<左边边界,说明到了到左边界
+        }else if(x-radius<left){
+            x=left+radius;
+            //取反
+            vx*=-1;
+        }else if(y-radius<tops){
+            y=tops+radius;
+            //取反
+            vy*=-1;
+        }else if(y+radius>bottom){
+            y=bottom-radius;
+            //取反
+            vy*=-1;
+        }
+        context.translate(x,y);
         context.beginPath();
-        context.arc(0, 0, 20, 0, (Math.PI * 2), true);
+        context.arc(0, 0, radius, 0, (Math.PI * 2), true);
         context.closePath();
         context.fillStyle = 'green';
         context.fill();
@@ -36,7 +72,7 @@
 
     (function drawFrame() {
         window.requestAnimationFrame(drawFrame, canvas);
-        context.clearRect(0, 0, 800, 800);
+        context.clearRect(0, 0, 400, 400);
         draw();
     }());
 </script>

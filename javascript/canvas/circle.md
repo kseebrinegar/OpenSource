@@ -228,3 +228,139 @@ js
 
 
 #4. ball
+###(1),永不出边框的球
+key word:translate
+
+js
+```js
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+
+    var left = 0;
+    var right = canvas.width;
+    var tops = 0;
+    var bottom = canvas.height;
+
+
+    var vx = Math.random() * 10 - 5;
+    var vy = Math.random() * 10 - 5;
+
+    var x = canvas.width/2;
+    var y = canvas.height/2;
+
+    var radius = 20;
+
+    function draw() {
+        context.save();
+        x+=vx;
+        y+=vy;
+        //1.移位加半径>宽度值时,说明是到了右边界
+        if((x+radius)>right){
+            //定住
+            x = right - radius;
+            //用于取反往方向
+            vx *= -1;
+
+            //2.位移量减去半径<左边边界,说明到了到左边界
+        }else if(x-radius<left){
+            x=left+radius;
+            //取反
+            vx*=-1;
+        }else if(y-radius<tops){
+            y=tops+radius;
+            //取反
+            vy*=-1;
+        }else if(y+radius>bottom){
+            y=bottom-radius;
+            //取反
+            vy*=-1;
+        }
+        context.translate(x,y);
+        context.beginPath();
+        context.arc(0, 0, radius, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fillStyle = 'green';
+        context.fill();
+        context.restore();
+    }
+
+    (function drawFrame() {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, 400, 400);
+        draw();
+    }());
+```
+###(2),相碰的球
+key word:translate
+
+* 1.  if (Math.abs(dist) < ball0.radius + ball1.radius) 用于判断是否相碰
+* 2.    ball1.vx *=-1;用于取反方向.
+
+js
+```js
+     //创建球对象
+     function Ball () {
+         this.x = 0;
+         this.y = 0;
+         this.radius = 20;
+         this.vx = 0;
+         this.vy = 0;
+     }
+     //所有画图在这个方法进行
+     Ball.prototype.draw = function (context) {
+         context.save();
+         context.translate(this.x, this.y);
+         context.fillStyle = 'green';
+         context.beginPath();
+         context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
+         context.closePath();
+         context.fill();
+         context.restore();
+     };
+ //获取当前球的边界值,用于作判断
+     Ball.prototype.getBounds = function () {
+         return {
+             x: this.x - this.radius,
+             y: this.y - this.radius,
+             width: this.radius * 2,
+             height: this.radius * 2
+         };
+     };
+ 
+ 
+     var canvas = document.getElementById('canvas');
+     var context = canvas.getContext('2d');
+ 
+     var ball0 = new Ball();
+     var  ball1 = new Ball();
+ 
+     //(1)定义第一个球的属性,用于绘制时需要
+     ball0.x = 50;
+     ball0.y = canvas.height / 2;
+     ball0.vx = 1;
+ 
+     //定义第二个球的属性,用于绘制时需要,注意这里的vx为负数.这是为了让他们往相反方向运动的需要
+     ball1.x = 300;
+     ball1.y = canvas.height / 2;
+     ball1.vx = -1;
+ 
+     (function drawFrame () {
+         window.requestAnimationFrame(drawFrame, canvas);
+         context.clearRect(0, 0, canvas.width, canvas.height);
+         //(2),累加数据,用于运动.
+         ball0.x += ball0.vx;
+         ball1.x += ball1.vx;
+         //(3),这里是为了算出两个球的距离
+         var dist = ball1.x - ball0.x;
+         //(4),如果两个球的半径加起来大于两个球的圆心距离.这说明两个球有相碰在一起了.
+         if (Math.abs(dist) < ball0.radius + ball1.radius) {
+             //能进这个if语句的,说明球已经相碰在一起了.这里,我们只需要给一个相反的方向给他们,就可以让他们往相反方向运动了.
+             ball0.vx *=-1;
+             ball1.vx *=-1;
+         }
+         ball0.draw(context);
+         ball1.draw(context);
+     }());
+
+```
+
