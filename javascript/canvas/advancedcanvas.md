@@ -109,8 +109,17 @@ KE0  KE1 = KE0Final+KE1Final;
 再有: 
 = 
 
-(m x m0 x v²) + (m x m1 x v²) = (m x m0 x Final²) + (m x m1 x Final²);
+(m x m0 x v²) + (m x m1 x v²) = (m x m0 x v0Final²) + (m x m1 x v1Final²);
 
+所以碰撞后的速度应该是:
+v0Final = ((m0 - m1) x v0 + 2 x m1 x v1) / m0 + m1;
+
+v1Final = ((m1 - m0) x v1 + 2 x m0 x v0) / m0 + m1;
+
+
+
+ 
+ 
 
 
 
