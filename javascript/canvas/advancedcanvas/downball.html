@@ -1,17 +1,26 @@
-#canvas高级动画
-####html
-```html
-<canvas id="canvas" width="400" height="400"></canvas>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="400" class="aa" height="400"></canvas>
 <style>
-    body{background: #000000;}
-    canvas{background: #ffffff;}
-</style>
-```
-##1.重力加物理碰撞效果.
-key word:translate,         vx *= bounce;        vy += gravity;
+    body {
+        background: #000000;
+    }
 
-```js
-  //一,创建球对象
+    canvas {
+        background: #ffffff;
+    }
+
+    input {
+        background: #ffffff;
+    }
+</style>
+<script>
+    //一,创建球对象
     function Ball (radius) {
         this.x = 0;
         this.y = 0;
@@ -30,10 +39,10 @@ key word:translate,         vx *= bounce;        vy += gravity;
         context.fill();
         context.restore();
     };
-    
+
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
-    
+
    var  ball = new Ball();
     //位移量
     var vx = Math.random() * 10 - 5;
@@ -83,4 +92,7 @@ key word:translate,         vx *= bounce;        vy += gravity;
     }());
 
 
-```
+</script>
+
+</body>
+</html>
