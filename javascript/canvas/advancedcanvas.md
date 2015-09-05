@@ -118,24 +118,74 @@ v1Final = ((m1 - m0) x v1 + 2 x m0 x v0) / m0 + m1;
 
 
 
- 
- 
-
-
-
-
-
-
-
-
-
-
-动量实例
-
 js
 
 ```js
+  //一,创建球对象
+    function Ball(radius) {
+        this.x = 0;
+        this.y = 0;
+        this.radius = radius || 20;
+        this.vx = 0;
+        this.vy = 0;
+    }
+    //所有画图在这个方法进行
+    Ball.prototype.draw = function (context) {
+        context.save();
+        context.translate(this.x, this.y);
+        context.fillStyle = 'green';
+        context.beginPath();
+        context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fill();
+        context.restore();
+    };
 
+
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var ball0 = new Ball(),
+            ball1 = new Ball();
+
+    //1.设置属性
+    ball0.mass = 2.5;
+    ball0.x = 50;
+    ball0.y = canvas.height / 2;
+    ball0.vx = 1;
+
+    ball1.mass = 1;
+    ball1.x = 300;
+    ball1.y = canvas.height / 2;
+    ball1.vx = -1;
+
+    (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        //2.设置偏移
+        ball0.x += ball0.vx;
+        ball1.x += ball1.vx;
+
+
+        var dist = ball1.x - ball0.x;
+        //3.如果能进这里,说明已经相碰.
+        if (Math.abs(dist) < ball0.radius + ball1.radius) {
+            
+            //4.碰撞后速度公式:v0Final = ((m0 - m1) x v0 + 2 x m1 x v1) / m0 + m1;
+            var vx0Final = ((ball0.mass - ball1.mass) * ball0.vx + 2 * ball1.mass * ball1.vx) /
+                            (ball0.mass + ball1.mass),
+                    //.碰撞后速度公式:v1Final = ((m1 - m0) x v1 + 2 x m0 x v0) / m0 + m1;
+                    vx1Final = ((ball1.mass - ball0.mass) * ball1.vx + 2 * ball0.mass * ball0.vx) /
+                            (ball0.mass + ball1.mass);
+            
+            ball0.vx = vx0Final;
+            ball1.vx = vx1Final;
+            ball0.x += ball0.vx;
+            ball1.y += ball1.vx;
+        }
+        ball0.draw(context);
+        ball1.draw(context);
+    }());
 
 ```
 

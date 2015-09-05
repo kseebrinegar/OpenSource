@@ -70,10 +70,13 @@
         //3.如果能进这里,说明已经相碰.
         if (Math.abs(dist) < ball0.radius + ball1.radius) {
 
+            //4.碰撞后速度公式:v0Final = ((m0 - m1) x v0 + 2 x m1 x v1) / m0 + m1;
             var vx0Final = ((ball0.mass - ball1.mass) * ball0.vx + 2 * ball1.mass * ball1.vx) /
                             (ball0.mass + ball1.mass),
+                    //.碰撞后速度公式:v1Final = ((m1 - m0) x v1 + 2 x m0 x v0) / m0 + m1;
                     vx1Final = ((ball1.mass - ball0.mass) * ball1.vx + 2 * ball0.mass * ball0.vx) /
                             (ball0.mass + ball1.mass);
+
             ball0.vx = vx0Final;
             ball1.vx = vx1Final;
             ball0.x += ball0.vx;
