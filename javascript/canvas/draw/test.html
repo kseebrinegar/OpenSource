@@ -2,13 +2,77 @@
 <html>
 <head>
     <title></title>
+    <meta charset="UTF-8">
 </head>
 <body>
+<button id="next">next</button>
+<button id="pre">pre</button>
+
 <script>
-    (function(){
-        alert('wenjun');
-        arguments.callee();
-    }())
+    var next = document.getElementById('next');
+    var pre = document.getElementById('pre');
+    var curePage = 0;
+    var imgarr = ['img1','img2','img3','img4','img5','img6','img7','img8'];
+    var totalPage = Math.ceil(imgarr.length/6);
+   console.log("totalPage:",totalPage);
+
+    var startIndex = curePage * 6;
+    for(var i=0;i<6;i++,startIndex++){
+        //这时的判断是以防到了9时,没有数据.就直接中断,不要循环
+        if(imgarr[startIndex]){
+            console.log(imgarr[startIndex]);
+        } else{
+            break;
+        }
+
+    }
+    console.log('=============================page:',curePage+1,'=====================================');
+    //点击前进
+    next.addEventListener('click',function(){
+        curePage++;
+        //1.最好作点边界判断,在这里.curePage++就已经到了边界了.我们作个判断
+
+        //能进这个if的,说明已经到了边界,那么我们取数时,要小心点.
+        if(curePage>=totalPage){
+            //到了边界了后,我们让curepage就等于边界了.停在哪,不动了.于是有:curePage=totalPage;
+            curePage=totalPage;
+        }
+        //取数据.是根据:curePage x 6的为开始开始
+        curePage * 6;
+        for(var i=0;i<6;i++, startIndex++){
+            //这时的判断是以防到了9时,没有数据.就直接中断,不要循环
+            if(imgarr[startIndex]){
+                console.log(imgarr[startIndex]);
+            } else{
+                break;
+            }
+        }
+        console.log('=============================page:',curePage+1,'=====================================');
+    },false);
+
+    pre.addEventListener('click',function(){
+        curePage--;
+        //1.最好作点边界判断,在这里.curePage++就已经到了边界了.我们作个判断
+
+        //能进这个if的,说明已经到了边界,那么我们取数时,要小心点.
+        if(curePage<=0){
+            //到了边界了后,我们让curepage就等于边界了.停在哪,不动了.于是有:curePage=totalPage;
+            curePage=0;
+        }
+        //取数据.是根据:curePage x 6的为开始开始
+         startIndex = curePage * 6;
+
+        for(var i=0;i<6;i++,startIndex++){
+            //这时的判断是以防到了9时,没有数据.就直接中断,不要循环
+            if(imgarr[startIndex]){
+                console.log(imgarr[startIndex]);
+            } else{
+                break;
+            }
+        }
+        console.log('=============================page:',curePage+1,'=====================================');
+    },false);
+
 </script>
 
 </body>
