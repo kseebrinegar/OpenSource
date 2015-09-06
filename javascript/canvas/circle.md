@@ -52,7 +52,7 @@ js
 
 ```
 
-#2line 画线
+#2 line 画线
 key word:lineTo,stroke
 
 js
@@ -74,6 +74,39 @@ js
     }
 
 ```
+#### 画图.
+key word:drawImage
+
+* 语法 1
+```
+context.drawImage(img,x,y);
+```
+
+ 语法 2
+``` 
+ context.drawImage(img,x,y,width,height);
+```
+
+语法 3
+```
+context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+```
+
+参数值
+```
+参数	描述
+img	规定要使用的图像、画布或视频。
+sx	可选。开始剪切的 x 坐标位置。
+sy	可选。开始剪切的 y 坐标位置。
+swidth	可选。被剪切图像的宽度。
+sheight	可选。被剪切图像的高度。
+x	在画布上放置图像的 x 坐标位置。
+y	在画布上放置图像的 y 坐标位置。
+width	可选。要使用的图像的宽度。（伸展或缩小图像）
+height	可选。要使用的图像的高度。（伸展或缩小图像）
+```
+
+
 
 
 
