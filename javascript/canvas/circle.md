@@ -388,3 +388,78 @@ js
 
 ```
 
+###（3）重置物体：
+
+js
+```js
+
+  //1.球体对象
+    function Ball (radius, color) {
+        this.x = 0;
+        this.y = 0;
+        this.radius = radius || 10;
+        this.vx = 0;
+        this.vy = 0;
+        this.color = color || "green";
+    }
+    //画球
+    Ball.prototype.draw = function (context) {
+        context.save();
+        context.translate(this.x, this.y);
+        context.fillStyle = this.color;
+        context.beginPath();
+        context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fill();
+        context.restore();
+    };
+
+
+    var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            balls = [],
+
+            //创建球的个数
+            numBalls = 1000,
+            //球运动的加速度
+            gravity = 0.5;
+
+      //2. 批量创建小球对象
+    for (var ball, i = 0; i < numBalls; i++) {
+
+        ball = new Ball(3,['red','green','blue'][i%3]);
+        //初始位置
+        ball.x  = canvas.width / 2;
+        ball.y  = canvas.height;
+        //x轴上的速度向量
+        ball.vx = Math.random()*5;
+        //y轴上的速度向量
+        ball.vy = Math.random()*10;
+        balls.push(ball);
+    }
+
+    function draw (ball) {
+        //
+        ball.vy += gravity;
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        //边检操作。如果能进这if语句，就表示。已经越界。
+        if (ball.x - ball.radius > canvas.width || ball.x + ball.radius < 0 || ball.y - ball.radius > canvas.height || ball.y + ball.radius < 0) {
+            //重置球的位置
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height;
+            ball.vx = Math.random() * 2 - 1;
+            ball.vy = Math.random() * -30;
+        }
+        ball.draw(context);
+    }
+
+    //3.动画的无限回调
+    (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        //5.批量画球
+        balls.forEach(draw);
+    }());
+
+```
