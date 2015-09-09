@@ -21,93 +21,48 @@
     }
 </style>
 <script>
+    //创建对象
+    function Ball() {
+        this.x = 0;
+        this.y = 0;
+
+    }
+    //所有画图在这个方法进行
+    Ball.prototype.draw = function (context) {
+        context.save();
+        context.translate(this.x, this.y);
+        context.scale(this.scaleX, this.scaleY);
+        context.drawImage(img,0,0)
+        context.restore();
+    };
+
 
     var img = document.getElementById('imgid');
     img.onload = function () {
         var canvas = document.getElementById('canvas');
         var context = canvas.getContext('2d');
-        var ship = new Ball();
-        vr = 0,
-                vx = 0,
-                vy = 0,
-                thrust = 0;
+        var ball = new Ball();
+        var centerX = canvas.width/3;
+        var centerY = canvas.height/2;
 
-        ship.x = canvas.width / 2;
-        ship.y = canvas.height / 2;
+        var RX = 150;
+        var RY = 80;
+        var centerScale = 0.8;
+        var range = 0.5;
+        var angle = 0;
+        var angle2 = 0.608;
+        var speed = 0.05;
 
-
-        //创建球对象
-        function Ball() {
-            this.x = 0;
-            this.y = 0;
-            this.vx = 0;
-            this.vy = 0;
-            this.width = img.width;
-            this.height = img.height;
-            this.radius = 20;
-        }
-
-        //所有画图在这个方法进行
-        Ball.prototype.draw = function (context) {
-            context.save();
-            context.fillStyle = 'green';
-            context.translate(this.x, this.y);
-            context.beginPath();
-            context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
-            context.closePath();
-            context.fill();
-            context.restore();
-        };
-
-
-        //(1)定义属性,用于绘制时需要
-        var thrust = 1;
-        var angle = 0.1;
-        var vx = 1;
-        var vy = 2;
-        var angle = 0.1;
-        ship.rotation = 0.01;
-        var vr=1;
         (function drawFrame() {
             window.requestAnimationFrame(drawFrame, canvas);
             context.clearRect(0, 0, canvas.width, canvas.height);
-
-            ship.rotation += vr * Math.PI / 180;
-            var angle = ship.rotation, //in radians
-                    ax = Math.cos(angle) * thrust,
-                    ay = Math.sin(angle) * thrust,
-                    left = 0,
-                    right = canvas.width,
-                    top = 0,
-                    bottom = canvas.height;
-
-            vx += ax;
-            vy += ay;
-            //设置速度微量
-            ship.x += vx;
-            ship.y += vy;
-
-            //进了这里，说明 ，到了右边
-            if (ship.x - ship.width> right) {
-                //重置物体到左边
-                ship.x = left - ship.width;
-
-                //进了这里，说明 ，到了左边
-            } else if (ship.x + ship.width < left) {
-                //重置物体右边
-                ship.x = right + ship.width;
-            }
-            //进了这里，说明 ，到了下边
-            if (ship.y - ship.height > bottom) {
-                //重置物体到上边
-                ship.y = top - ship.height;
-
-                //进了这里，说明 ，到了上边
-            } else if (ship.y < top - ship.height) {
-                //重置物体到下边
-                ship.y = bottom + ship.height;
-            }
-            ship.draw(context);
+            ball.x = centerX + Math.sin(angle) * RX;
+            ball.y = centerY + Math.cos(angle) * RY;
+            //近大远小
+            ball.scaleX = ball.scaleY = centerScale + Math.sin(angle2) * range;
+            angle += speed;
+            angle2 += speed;
+            ball.draw(context);
 
         }());
 
