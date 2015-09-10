@@ -21,13 +21,15 @@
 </style>
 <script>
     //1.球体对象
-    function Ball(radius, color) {
+    function Ball(radius) {
+        //颜色值选项
+        var color = ['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'orange', 'purple', 'red', 'silver', 'teal',  'yellow'];;
         this.x = 0;
         this.y = 0;
         this.radius = radius || 10;
         this.vx = 0;
         this.vy = 0;
-        this.color = color || "green";
+        this.color = color[Math.floor(Math.random()*color.length)];
     }
     //画球
     Ball.prototype.draw = function (context) {
@@ -46,14 +48,14 @@
             context = canvas.getContext('2d');
 
     var balls = [],
-            numBalls = 10,
+            numBalls = 1000,
             centerX = canvas.width / 2,
             centerY = canvas.height / 2,
             cos, sin,
             angle = 0.01;
 
     for (var ball, i = 0; i < numBalls; i++) {
-        ball = new Ball();
+        ball = new Ball(2);
         ball.x = Math.random() * canvas.width;
         ball.y = Math.random() * canvas.height;
         balls.push(ball);
