@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="800" height="800"></canvas>
+
+<h1 style="color: #fff;">球刚才贴到墙上，循环的精确计算</h1>
+
+<style>
+    body {
+        background: #000000;
+    }
+
+    canvas {
+        background: #ffffff;
+    }
+
+    input {
+        background: #ffffff;
+    }
+</style>
+<script>
+    //1.球体对象
+    function Ball (radius, color) {
+        this.x = 0;
+        this.y = 0;
+        this.radius = radius || 10;
+        this.vx = 0;
+        this.vy = 0;
+        this.color = color || "green";
+    }
+    //画球
+    Ball.prototype.draw = function (context) {
+        context.save();
+        context.translate(this.x, this.y);
+        context.fillStyle = this.color;
+        context.beginPath();
+        context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
+        context.closePath();
+        context.fill();
+        context.restore();
+    };
+
+
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var ball = new Ball();
+    var angle = 0;
+    (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        //解释：  由于cos * 斜边等于 x轴上的作标 ，sin * 斜边等于 y轴上的作标。 注意：这里：canvas.width/2-ball.radius 这是圆心和画布中心的长。这也是我们需要的斜边。为什么呢？因为角度为0时，cos(0)是不是等于值呢？
+        //又由于canvas是从左上角（0，0）作标开始计算的。所以，我们需要加上canvas.width/2 这是x轴上，画布的中心作标，同理canvas.height/2
+        //这是理论和实际的结合。
+        ball.x = (canvas.width/2 + Math.cos(angle)*(canvas.width/2-ball.radius));
+        ball.y= (canvas.height/2 +  Math.sin(angle)*(canvas.height/2-ball.radius));
+
+        angle+=0.01;
+        ball.draw(context);
+    }());
+</script>
+
+</body>
+</html>
