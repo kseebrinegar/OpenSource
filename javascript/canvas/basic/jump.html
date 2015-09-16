@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<img src="b.png" width="78"  height="71" style="display: none;" id="imgid">
+<canvas id="canvas" width="400" class="aa" height="400"></canvas>
+<style>
+    body {
+        background: #000000;
+    }
+
+    canvas {
+        background: #ffffff;
+    }
+
+    input {
+        background: #ffffff;
+    }
+</style>
+<script>
+    //创建对象
+    function Ball(elem) {
+        this.x = 0;
+        this.y = 0;
+        this.elem = elem;
+
+    }
+    //所有画图在这个方法进行
+    Ball.prototype.draw = function (context) {
+        context.save();
+        context.translate(this.x, this.y);
+        context.scale(this.scaleX, this.scaleY);
+        context.drawImage(img,-this.elem.width/2,-this.elem.height/2)
+        context.restore();
+    };
+
+
+    var img = document.getElementById('imgid');
+    img.onload = function () {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var ball = new Ball(img);
+        ball.x = 0;
+        ball.y = canvas.height;
+        var centerX = canvas.width/2;
+        var centerY = canvas.height/2;
+
+
+
+        (function drawFrame() {
+            window.requestAnimationFrame(drawFrame, canvas);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            ball.draw(context);
+        }());
+    }
+</script>
+
+</body>
+</html>
