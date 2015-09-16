@@ -25,7 +25,8 @@
 **注意：手机抓包，他们一定要在同个网段内，不然，就抓不到的**
 * 1.打开charles 设置 > 端口8888,记录勾选上：Enable transparent HTTP proxying
 * 2.打开charles 访问控制设置 > 添加上你手机上的ip地址
-* 3.第一次使用，charles会弹出访问提示，点同意。即可，mac上的修改就会影响到手机上的效果
+* 3.打开手机 设置 > wifi>http proxy>手动>port:8888,server为mac/pc上的ip地址
+* 4.第一次使用，charles会弹出访问提示，点同意。即可，mac上的修改就会影响到手机上的效果
 
 
 
