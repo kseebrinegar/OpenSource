@@ -37,17 +37,17 @@ DocumentRoot "文件地址"
 
 #2.mac上的xampp服务器,本地同一个ip,配置多个域名指向不同的文件方式
 
-* 1.先配置host文件  /etc/host,也就是作本地域名DNS映射
+## 1.先配置host文件  /etc/host,也就是作本地域名DNS映射
 ```
 127.0.0.1 www.server.com
 127.0.0.1 www.test.com test.com
 127.0.0.1 www.admin.com admin.com
 ```
-* 2. 我在我的mac的目录/Users/richardgong/Documents/workspace/  创建三个目录,分别为:test1, test2,test3,表示不同的文件夹
+## 2. 我在我的mac的目录/Users/richardgong/Documents/workspace/  创建三个目录,分别为:test1, test2,test3,表示不同的文件夹
 
 然后创建各自的index.html内容的话,随便写,只要能分别开来就可以了
 
-* 3. 修改httpd.conf文件，目录是/Applications/XAMPP/xamppfiles/etc/httpd.conf  我这里让它指向我的项目目录下
+## 3. 修改httpd.conf文件，目录是/Applications/XAMPP/xamppfiles/etc/httpd.conf  我这里让它指向我的项目目录下
 ```
 DocumentRoot "/Users/richardgong/Documents/workspace"
 <Directory "/Users/richardgong/Documents/workspace">
@@ -55,10 +55,10 @@ DocumentRoot "/Users/richardgong/Documents/workspace"
 ```
 其它的,可以不用动
 
-* 4. 在httpd.conf文件中,搜索 “httpd-vhosts.conf”，去掉前面的 # 注释符，确保引入了 vhosts 虚拟主机配置文件
+## 4. 在httpd.conf文件中,搜索 “httpd-vhosts.conf”，去掉前面的 # 注释符，确保引入了 vhosts 虚拟主机配置文件
 
 
-* 5.修改httpd-vhosts.conf文件，目录是/Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf,添加虚拟目录和域名
+## 5.修改httpd-vhosts.conf文件，目录是/Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf,添加虚拟目录和域名
 
 ```
 <VirtualHost *:80>
