@@ -1,7 +1,7 @@
-#Apache 配置多个项目方法
+#Apache 相关配置
 **准备工作:找到apache httpd.conf文件
 
-##1. 配置多个端口
+#1. apache配置多个端口
 
 在文件上添加 Listen:端口
 
