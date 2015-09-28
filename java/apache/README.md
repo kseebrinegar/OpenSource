@@ -53,6 +53,7 @@ DocumentRoot "/Users/richardgong/Documents/workspace"
 <Directory "/Users/richardgong/Documents/workspace">
 
 ```
+注意:DocumentRoot "/Users/richardgong/Documents/workspace" 这个地方,可以用默认的,不修改也是没有问题的
 其它的,可以不用动
 
 ## 4. 在httpd.conf文件中,搜索 “httpd-vhosts.conf”，去掉前面的 # 注释符，确保引入了 vhosts 虚拟主机配置文件
