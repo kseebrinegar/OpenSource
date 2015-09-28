@@ -90,6 +90,8 @@ DocumentRoot "/Users/richardgong/Documents/workspace"
 
 ```
 
+重启服务器,即可
+
 
 
 
