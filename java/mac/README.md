@@ -21,4 +21,12 @@ ZSH_THEME="duellj"
 sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /bin/subl
 
 ```
+sometimes "sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /bin/subl" would report a error like " ln -s: Operation not permitted",we can you alias to instead it
+```sh
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+```
+here , edit in 
+```sh 
+~/.zshrc
+```
 
