@@ -112,7 +112,7 @@ Error 403
 localhost
 Apache/2.4.10 (Unix) OpenSSL/1.0.1j PHP/5.5.19 mod_perl/2.0.8-dev Perl/v5.16.3
 ```
-路径是对的。但是，怎么都能访问
+路径是对的。但是，怎么都不能访问，其实就是\<Directory />权限问题,给权限就可以了
 
 查看了httpd.conf
 
