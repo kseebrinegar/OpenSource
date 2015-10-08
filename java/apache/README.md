@@ -98,6 +98,47 @@ DocumentRoot "/Users/richardgong/Documents/workspace"
 
 
 
+#apache Error 403报错
+
+```html
+Access forbidden!
+
+You don't have permission to access the requested directory. There is either no index document or the directory is read-protected.
+
+If you think this is a server error, please contact the webmaster.
+
+Error 403
+
+localhost
+Apache/2.4.10 (Unix) OpenSSL/1.0.1j PHP/5.5.19 mod_perl/2.0.8-dev Perl/v5.16.3
+```
+路径是对的。但是，怎么都能访问
+
+查看了httpd.conf
+
+```conf
+<Directory />
+    AllowOverride none
+    Require all denied
+</Directory>
+
+```
+
+
+改成：
+
+```conf
+
+<Directory />
+    Options FollowSymLinks
+    AllowOverride None
+    Order deny,allow
+    Allow from all
+    Satisfy all
+</Directory> 
+```
+即可
+
 
 
 
