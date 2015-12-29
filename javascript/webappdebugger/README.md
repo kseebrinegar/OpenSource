@@ -1,4 +1,4 @@
-#html5页面在手机上的调试
+#一，html5页面在手机上的调试 IOS篇
 
 我们经常会遇到类似如：电脑上的模拟器上模拟的手机页面展示和js逻辑都没有问题的，在到了手机上就有问题了。又不知道出了什么问题，于是 ，我们必须在真手机上调试。在手机上调试页面是比较麻烦的事情，但苹果手机和安卓手机都提供了一套调试功能给我们。我这里只讲iphone上的页面调试
 
@@ -28,5 +28,18 @@
 * 3.打开手机 设置 > wifi>http proxy>手动>port:8888,server为mac/pc上的ip地址
 * 4.第一次使用，charles会弹出访问提示，点同意。即可，mac上的修改就会影响到手机上的效果
 
+
+
+
+#二，html5页面在手机上的调试 android+chrome篇
+
+##1.mac上的谷歌浏览器地址栏上输入：chrome://inspect/#devices
+##2.【设置】>【开发者选项】>【USB调试】打开手机USB调试。
+##3.用数据钱让mac和android。
+##4.在手机上，输入自己要浏览器的网页
+##5，刷新mac上的chrome://inspect/#devices，就会检测到的设备上正在运行的网站下面那个【inspect]，即可
+
+参考文档
+http://www.codingserf.com/index.php/2014/05/debug-on-devices/
 
 
