@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; utf-8"/>
+    <title>Example Javascript Jackpot Tickers</title>
+    <style>
+        div {
+            width: 200px;
+            height: 20px;
+            border: 1px solid #333333;
+            background- color: #DDD;
+            margin: 6px;
+            color: #000000;
+        }
+    </style>
+    <script language="JavaScript" type="text/javascript"
+            src=" http://tickers.playtech.com/jackpots/new_jackpotjs.js"></script>
+</head>
+
+<body>
+
+<div><span id="text1"> </span><br/></div>
+<div><span id="text2"> </span><br/></div>
+<div><span id="text3"> </span><br/></div>
+<div><span id="text4"> </span><br/></div>
+<div><span id="text5"> </span><br/></div>
+<div><span id="text6"> </span><br/></div>
+
+<script language="JavaScript">
+
+    var ticker = new Ticker({info: 1, local: 1, casino: 'playtech', game: 'car', currency: 'eur'});
+    ticker.attachToTextBox('text1');
+    ticker.tick();
+    var ticker2 = new Ticker({info: 1, local: 1, casino: 'playtech', game: 'car', type: 'count'});
+    ticker2.attachToTextBox('text2');
+    ticker2.tick();
+
+    var ticker3 = new Ticker({info: 5, group: 'ms', type: 'sum'});
+    ticker3.attachToTextBox('text3');
+    ticker3.tick();
+    var ticker4 = new Ticker({info: 2, casino: 'playtech'});
+    ticker4.attachToTextBox('text4');
+    ticker4.tick();
+    var ticker5 = new Ticker({info: 4, local: 0, type: 'count'});
+    ticker5.attachToTextBox('text5');
+    ticker5.tick();
+
+    var ticker6 = new Ticker({info: 4, type: 'sum'});
+    ticker6.attachToTextBox('text6');
+    ticker6.SetCurrencySign('dollar');
+    ticker6.SetCurrencyPos(1);
+    ticker6.tick();
+
+</script>
+</body>
