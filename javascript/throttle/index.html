@@ -9,7 +9,7 @@
 
 <h1>滚动条scroll实例</h1>
 
-<h3>尽管</h3>
+<h3>本demo执行结果需要在console里看</h3>
 
 <div class="parallax-window" data-parallax="scroll" data-image-src="./img/helix-nebula-1400x1400.jpg"></div>
 
@@ -43,6 +43,8 @@
             result = func.apply(context, args);
             if (!timeout) context = args = null;
         };
+        //返回一个新方法给调用者
+
         return function () {
             var now = new Date().getTime();
             if (!previous && options.leading === false) previous = now;
@@ -51,23 +53,26 @@
             args = arguments;
             if (remaining <= 0 || remaining > wait) {
                 if (timeout) {
+                    //如果没有超时,就清除队列
                     clearTimeout(timeout);
                     timeout = null;
                 }
                 previous = now;
+                //执行回调
                 result = func.apply(context, args);
                 if (!timeout) context = args = null;
             } else if (!timeout && options.trailing !== false) {
+                //压入队列
                 timeout = setTimeout(later, remaining);
             }
             return result;
         };
     }
-
-
-    $(window).scroll(throttle(function () {
+    //生成一个handler方法,当成事件处理函数给jquery
+    var handler = throttle(function () {
         console.log('您滑动了滚动条,我会在3000毫秒后才你执行你想执行的函数');
-    }, 5000));
+    }, 5000);
+    $(window).scroll(handler);
 
 </script>
 </body>
