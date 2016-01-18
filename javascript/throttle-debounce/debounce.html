@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>滚动条mousemove事件实例</h1>
+
+<h3>本demo执行结果需要在console里看</h3>
+
+<script>
+    function debounce(time, callback) {
+        var last;
+        return function() {
+            var ctx = this,
+                    args = arguments;
+            clearTimeout(last);
+            last = setTimeout(function() {
+                callback.apply(ctx, args);
+            }, time);
+        };
+    };
+
+    var debounceIt = debounce(2000, function() {
+        console.log('你mousemove停止后的2000我才给你执行你想执行的逻辑哦!你不停,我就一直不执行哦');
+    });
+
+    document.body.addEventListener('mousemove',function(){
+        debounceIt();
+    },false);
+</script>
+</body>
+</html>
