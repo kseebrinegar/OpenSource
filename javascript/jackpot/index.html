@@ -7,11 +7,11 @@
             color: #000000;
         }
     </style>
-    <script language="JavaScript" type="text/javascript" src="http://tickers.playtech.com/jackpots/new_jackpotjs.js"></script>
+    <!--<script language="JavaScript" type="text/javascript" src=" http://tickers.playtech.com/jackpots/new_jackpotjs.js"></script>-->
+    <script language="JavaScript" type="text/javascript" src="new_jackpotjs.js"></script>
 </head>
 
 <body>
-
 <div><span id="text1"> </span><br/></div>
 <div><span id="text2"> </span><br/></div>
 <div><span id="text3"> </span><br/></div>
@@ -33,7 +33,7 @@
     ticker3.attachToTextBox('text3');
     ticker3.tick();
 
-    var source = 'info=1&casino=powerplay88&game=jb10p&font_face=arial&bold=false&bg_color=2f2f2f&font_color=f9d344&currency=cny&sign_align=left&update=--------';
+    var source = "info=1&casino=powerplay88&game=jpgt1-1&font_face=arial&bold=false&bg_color=2f2f2f&font_color=f9d344&currency=cny&sign_align=left&update=--------"
     var paramter = {};
     var items = source.split('&');
     for (var v in items) {
@@ -46,6 +46,7 @@
     var ticker4 = new Ticker(paramter);
 
     ticker4.attachToTextBox('text4');
+
     ticker4.tick();
 
     var ticker5 = new Ticker({info: 4, local: 0, type: 'count'});
