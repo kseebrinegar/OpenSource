@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    function PlatformDetected() {
+        var userAgent = navigator.userAgent.toLowerCase();
+        this.isIpad = userAgent.match(/ipad/i) == "ipad";
+        this.isIphoneOs = userAgent.match(/iphone os/i) == "iphone os";
+        this.isMidp = userAgent.match(/midp/i) == "midp";
+        this.isUc7 = userAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        this.isUc = userAgent.match(/ucweb/i) == "ucweb";
+        this.isAndroid = userAgent.match(/android/i) == "android";
+        this.isCE = userAgent.match(/windows ce/i) == "windows ce";
+        this.isWM = userAgent.match(/windows mobile/i) == "windows mobile";
+        this.isPhone = this.isIpad || this.isIphoneOs || this.isMidp || this.isUc7 || this.isUc || this.isAndroid || this.isCE || this.isWM;
+    }
+
+
+</script>
+</body>
+</html>
