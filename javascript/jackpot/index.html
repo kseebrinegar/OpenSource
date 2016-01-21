@@ -39,46 +39,8 @@
         }
     };
 
-<<<<<<< HEAD
     var HLComm = Class.create();
-=======
-    var ticker = new Ticker({info: 1, local: 1, casino: 'playtech', game: 'car', currency: 'eur'});
-    ticker.attachToTextBox('text1');
-    ticker.tick();
-    var ticker2 = new Ticker({info: 1, local: 1, casino: 'playtech', game: 'car', type: 'count'});
-    ticker2.attachToTextBox('text2');
-    ticker2.tick();
 
-
-    var ticker3 = new Ticker({info: 5, group: 'ms', type: 'sum'});
-    ticker3.attachToTextBox('text3');
-    ticker3.tick();
-debugger
-    var source = 'info=1&casino=powerplay88&game=jb10p&font_face=arial&bold=false&bg_color=2f2f2f&font_color=f9d344&currency=cny&sign_align=left&update=--------';
-    var paramter = {};
-    var items = source.split('&');
-    for (var v in items) {
-        var it = items[v];
-        var datas = it.split('=');
-        paramter[datas[0]] = datas[1];
-    }
-    paramter.info = +paramter.info;
-
-    var ticker4 = new Ticker(paramter);
-
-    ticker4.attachToTextBox('text4');
-    ticker4.tick();
-
-    var ticker5 = new Ticker({info: 4, local: 0, type: 'count'});
-    ticker5.attachToTextBox('text5');
-    ticker5.tick();
-
-    var ticker6 = new Ticker({info: 4, type: 'sum'});
-    ticker6.attachToTextBox('text6');
-    ticker6.SetCurrencySign('dollar');
-    ticker6.SetCurrencyPos(1);
-    ticker6.tick();
->>>>>>> 5a6715e7da82bcb319b1900ccbcf8f43db6015dd
 
 </script>
 
