@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>我的滚动图片</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            width: 200px;
+            height: 100px;
+            display: inline-block;
+            background: green;
+            border: #000 solid 1px;
+        }
+
+        div {
+            width: 500px;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        span, b {
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+<div id="div">
+    <span id="span"><a></a><a></a><a></a><a></a></span>
+    <b id="b"></b>
+</div>
+<script>
+    function a() {
+        var speed = 1//速度数值越大速度越慢
+        var b = document.getElementById("b");
+        var span = document.getElementById("span");
+        var div = document.getElementById("div");
+
+        b.innerHTML = span.innerHTML
+        function left() {
+            if((b.offsetWidth - div.scrollLeft)<=0){
+                div.scrollLeft -= span.offsetWidth;
+            }
+            else {
+                div.scrollLeft += 1;
+            }
+        }
+
+        var MyMar3 = setInterval(left, speed)
+        div.onmouseover = function () {
+            clearInterval(MyMar3)
+        }
+        div.onmouseout = function () {
+            MyMar3 = setInterval(left, speed)
+        }
+    }
+
+    a();
+</script>
+</body>
+</html>
