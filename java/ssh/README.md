@@ -42,7 +42,6 @@ ssh soho@100.162.88.100 -p 端口号
 
 
 
-
 回车后，会出现如下提示：
 ```
 The authenticity of host '100.162.88.100 (100.162.88.100)' can't be established
