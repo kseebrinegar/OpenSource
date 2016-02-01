@@ -30,8 +30,19 @@ soho@100.162.88.100's password:
 
 那么在git上输入
 ```
-ssh soho@100.162.88.100
+ssh soho@100.162.88.100  
 ```
+
+如果有端口:
+```
+ssh soho@100.162.88.100 -p 端口号 
+```
+
+默认是22
+
+
+
+
 回车后，会出现如下提示：
 ```
 The authenticity of host '100.162.88.100 (100.162.88.100)' can't be established
