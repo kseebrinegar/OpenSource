@@ -146,11 +146,13 @@
     function c() {
     }
 
-    c =0;
+    c = 1;
     console.log(c);
 
 ```
+Now the variable value is set to 1. The variable initialization overrides the function declaration.
 
+https://www.nczonline.net/blog/2010/01/26/answering-baranovskiys-javascript-quiz/
 
 
 
