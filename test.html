@@ -7,43 +7,13 @@
 <body>
 
 <script>
-    var a = ({
-        x: 10,
-        foo: function () {
+    function foreach() {
+    }
 
-            // entering `with(this)`: all variables are searched against `{}`
-            // before the engine attempts to create a new variable:
-            with (this) {
-
-                // `var x` creates a local `x`. But, during assignment,
-                // `x` matches `{}.x`, so `{}.x` is set. **local `x`**
-                // remains `undefined`.
-                var x = 20;
-
-                // `y` isn't found in `{}`, so it's a local variable
-                var y = 30;
-
-                // execute `bar()`
-                bar.call(this);
-            }
-
-            // we're now in scope of `{}.foo()`, but not `with(this)`.
-            function bar() {
-
-                // local variable `x` was declared, but never defined.
-                console.log(x);
-
-                // local variable `y` exists in the scope of `{}.foo()`
-                console.log(y);
-
-                // we're still in the "macro" scope of `{}`. So, `this` refers
-                // to `{}`, which was changed to 20.
-                console.log(this.x);
-            }
-
-        }
-    }).foo();
-
+    foreach (k in {a: 10, b: 20})
+    {
+        //....
+    }
 
 </script>
 
