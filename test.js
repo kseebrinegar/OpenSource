@@ -2,6 +2,14 @@
  * Created by richardgong on 8/6/16.
  */
 
-{
-    console.log('aaa');
-}
+
+
+
+
+var a = 'c'+ true ? 'aaaaaaaa':'bbbbbbbb';
+console.log(a);
+
+
+
+
+
