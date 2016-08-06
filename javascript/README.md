@@ -249,3 +249,122 @@ if (!("a" in window)) {
 alert(a);
 ```
 
+##9,诡异换行符! 在运算表达式中,号换行是被忽略的。而在return里, 却不会被忽略的。
+
+如在"+"号换行是被忽略的
+```
+var
+  b = 10,
+  c = (
+    20,
+    function (x) { return x + 100},
+    function () { return arguments[0]}
+  );
+ 
+a = b + c
+({x: 10}).x
+
+被看成:(忽略换行)
+
+a = b + c({x: 10}).x
+
+```
+
+return里, 却不会被忽略的。
+```
+ function aa() {
+        return 
+        {
+            name:'richard'
+        }
+    }
+
+    console.log(aa());//undefined
+    
+    这里的换行并没有忽略,而是当成undefined处理
+```
+
+##10. with和call结合之后之深渊
+
+```
+var a = ({
+    x: 10,
+    foo: function () {
+        function bar() {
+            console.log(x);
+            console.log(y);
+            console.log(this.x);
+        }
+        with (this) {
+            var x = 20;
+            var y = 30;
+            bar.call(this);
+        }
+    }
+}).foo();
+
+//undefined
+//30
+//20
+
+```
+
+详解:
+
+```
+function foo(a) {
+    // var x, y, bar - hoisting
+    function bar() {
+        console.log(x);
+        console.log(y);
+        console.log(a.x);
+    }
+    with (a) {
+        var x = 20;
+        var y = 30;
+        bar();
+    }
+}
+foo({x:10});
+
+```
+
+```
+var a = ({
+    x: 10,
+    foo: function () {
+
+        // entering `with(this)`: all variables are searched against `{}`
+        // before the engine attempts to create a new variable:
+        with (this) {
+
+            // `var x` creates a local `x`. But, during assignment,
+            // `x` matches `{}.x`, so `{}.x` is set. **local `x`** 
+            // remains `undefined`.
+            var x = 20;
+
+            // `y` isn't found in `{}`, so it's a local variable
+            var y = 30;
+
+            // execute `bar()`
+            bar.call(this);
+        }
+
+        // we're now in scope of `{}.foo()`, but not `with(this)`.
+        function bar() {
+
+            // local variable `x` was declared, but never defined.
+            console.log(x);
+
+            // local variable `y` exists in the scope of `{}.foo()`
+            console.log(y);
+
+            // we're still in the "macro" scope of `{}`. So, `this` refers
+            // to `{}`, which was changed to 20.
+            console.log(this.x);
+        }
+
+    }
+}).foo();
+
+```
