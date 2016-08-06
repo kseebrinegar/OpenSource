@@ -6,10 +6,6 @@
 
 
 
-var a = 'c'+ true ? 'aaaaaaaa':'bbbbbbbb';
-console.log(a);
-
-
 
 
 
