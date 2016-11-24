@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script src="./circliful/jquery.circliful.min.js"></script>
+</head>
+<body>
+
+<div class="myStat" data-dimension="58" data-text="1"
+     data-width="2" data-fontsize="28" data-percent="10" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+<div class="myStat" data-dimension="58" data-text="2"
+     data-width="2" data-fontsize="28" data-percent="20" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+<div class="myStat" data-dimension="58" data-text="3"
+     data-width="2" data-fontsize="28" data-percent="28" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+<div class="myStat" data-dimension="58" data-text="4"
+     data-width="2" data-fontsize="28" data-percent="45" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+<div class="myStat" data-dimension="58" data-text="5"
+     data-width="2" data-fontsize="28" data-percent="55" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+<div class="myStat" data-dimension="58" data-text="6"
+     data-width="2" data-fontsize="28" data-percent="65" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+<div class="myStat" data-dimension="58" data-text="7"
+     data-width="2" data-fontsize="28" data-percent="75" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+<div class="myStat" data-dimension="58" data-text="8"
+     data-width="2" data-fontsize="28" data-percent="85" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+<div class="myStat" data-dimension="58" data-text="9"
+     data-width="2" data-fontsize="28" data-percent="95" data-fgcolor="red"
+     data-bgcolor="green" data-fill="#fff"></div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.myStat').circliful();
+    });
+</script>
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        line-height: normal;
+    }
+    .circliful {
+        position: relative;
+        width: 58px;
+        height: 58px;
+    }
+
+    .circle-text {
+        width: 47px;
+        height: 47px;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgb(26,28,50);
+        border-radius: 50%;
+        color: #fff;
+        text-align: center;
+        line-height: 47px !important;
+    }
+
+</style>
+</body>
+</html>
