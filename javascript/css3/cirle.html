@@ -2,107 +2,168 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <script src="jquery.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .wheel-list {
-            position: relative;
-            display: block;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: #204d74;
-            margin: 0 auto;
-            top: 10px;
-            overflow: hidden;
-        }
-
-        .wheel-list li {
-            text-align: center;
-            font-size: 200px;
-            font-weight: bold;
-            color: #fff;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -150px;
-            ;
-            width: 300px;
-            height: 300px;
-            -moz-transform-origin: center bottom;
-            -webkit-transform-origin: center bottom;
-            -o-transform-origin: center bottom;
-            -ms-transform-origin: center bottom;
-            transform-origin: center bottom;
-            list-style: none;
-        }
-
-        .wheel-list li:nth-child(1) {
-            background: red;
-        }
-
-        .wheel-list li:nth-child(2) {
-            background: green;
-        }
-
-        .wheel-list li:nth-child(3) {
-            background: gray;
-        }
-
-        .wheel-list li:nth-child(4) {
-            background: blue;
-        }
-
-        .wheel-list li:nth-child(5) {
-            background: black;
-        }
-
-
-    </style>
 </head>
 
 <body>
-<ul id="wheel" class="wheel-list">
-    <li>
-        1
-    </li>
-    <li>
-        2
-    </li>
-    <li>
-        3
-    </li>
-    <li>
-        4
-    </li>
-    <li>
-        5
-    </li>
-</ul>
+
+<div class="pieContainer">
+    <div class="pieBackground"></div>
+    <div id="pieSlice1" class="hold">
+        <div class="pie"></div>
+    </div>
+    <div id="pieSlice2" class="hold">
+        <div class="pie"></div>
+    </div>
+    <div id="pieSlice3" class="hold">
+        <div class="pie"></div>
+    </div>
+    <div id="pieSlice4" class="hold">
+        <div class="pie"></div>
+    </div>
+    <div id="pieSlice5" class="hold">
+        <div class="pie"></div>
+    </div>
+    <div id="pieSlice6" class="hold">
+        <div class="pie"></div>
+    </div>
+    <div class="innerCircle">
+        <div class="content">1111</div>
+    </div>
+</div>
+<style>
+
+    .pieContainer {
+        height: 150px;
+        margin-left: 30px;
+        position: relative;
+    }
+
+    .pieBackground {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+    }
+
+    .pie {
+        transition: all 1s;
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+        clip: rect(0px, 75px, 150px, 0px);
+    }
+
+    .hold {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+        clip: rect(0px, 150px, 150px, 75px);
+    }
+
+    #pieSlice1 .pie {
+        background-color: #1b458b;
+        transform:rotate(30deg);
+    }
+
+    #pieSlice2 {
+        transform: rotate(30deg);
+    }
+
+    #pieSlice2 .pie {
+        background-color: #0a0;
+        transform: rotate(60deg);
+    }
+
+    #pieSlice3 {
+        transform: rotate(90deg);
+    }
+
+    #pieSlice3 .pie {
+        background-color: #f80;
+        transform: rotate(120deg);
+    }
+
+    #pieSlice4 {
+        transform: rotate(210deg);
+    }
+
+    #pieSlice4 .pie {
+        background-color: #08f;
+        transform: rotate(10deg);
+    }
+
+    #pieSlice5 {
+        transform: rotate(220deg);
+    }
+
+    #pieSlice5 .pie {
+        background-color: #a04;
+        transform: rotate(70deg);
+    }
+
+    #pieSlice6 {
+        transform: rotate(290deg);
+    }
+
+    #pieSlice6 .pie {
+        background-color: #ffd700;
+        transform: rotate(70deg);
+    }
+
+    .innerCircle {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background-color: #444;
+        border-radius: 60px;
+        top: 15px;
+        left: 15px;
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.5) inset;
+        color: white;
+    }
+    .innerCircle .content {
+        position: absolute;
+        display: block;
+        width: 120px;
+        top: 30px;
+        left: 0;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-left: 30px;
+        padding-left: 20px;
+        color: white;
+        margin-bottom: 20px;
+        border-bottom: 4px solid #fff;
+        width: 130px;
+    }
+</style>
 <script>
-    $(function () {
-
-        var pn =5
-        var pa = 360 / pn;
-        //三角函数:sin(Q) = a/c;
-        //1弧度=PI/180;
-        //于是就有:
-        var li_width = Math.sin(Math.PI/180 * pa/2) * 300;
-        //勾股定理 c*c  = a*a + b*b;
-        //于是就有
-        var li_height = Math.sqrt(300*300-li_width*li_width);
-
-        $('#wheel').find('li').css({'width':li_width*2,'margin-left':-li_width,'height':li_height,'margin-top':-li_height});
-        for (var i = 0; i < pn; i++) {
-            $('#wheel').find('li').eq(i).css('transform', 'rotate(' + pa * i + 'deg)');
-        }
-
-
-    });
+    //    $(function () {
+    //
+    //        var pn =5
+    //        var pa = 360 / pn;
+    //        //三角函数:sin(Q) = a/c;
+    //        //1弧度=PI/180;
+    //        //于是就有:
+    //        var li_width = Math.sin(Math.PI/180 * pa/2) * 300;
+    //        //勾股定理 c*c  = a*a + b*b;
+    //        //于是就有
+    //        var li_height = Math.sqrt(300*300-li_width*li_width);
+    //
+    //        $('#wheel').find('li').css({'width':li_width*2,'margin-left':-li_width,'height':li_height,'margin-top':-li_height});
+    //        for (var i = 0; i < pn; i++) {
+    //            $('#wheel').find('li').eq(i).css('transform', 'rotate(' + pa * i + 'deg)');
+    //        }
+    //
+    //
+    //    });
 </script>
 
 </body>
